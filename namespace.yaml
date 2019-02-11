@@ -172,7 +172,6 @@ items:
   kind: Namespace
   metadata:
     annotations:
-      cattle.io/appIds: kong
       cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-02-11T17:38:14Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-02-11T17:38:14Z"}]}'
       field.cattle.io/creatorId: user-5dn6d
       field.cattle.io/projectId: c-5qdp4:p-bznsc
