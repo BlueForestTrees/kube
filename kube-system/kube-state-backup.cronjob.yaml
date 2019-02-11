@@ -15,7 +15,7 @@ spec:
       template:
         metadata:
           annotations:
-            cattle.io/timestamp: '2019-02-11T14:27:50Z'
+            cattle.io/timestamp: '2019-02-11T14:38:00Z'
           creationTimestamp: null
           labels:
             app: kube-backup
@@ -56,6 +56,6 @@ spec:
               secretName: kube-backup-ssh
           - emptyDir: {}
             name: cache
-  schedule: '* * * * *'
+  schedule: '*/10 * * * *'
   successfulJobsHistoryLimit: 3
   suspend: false
