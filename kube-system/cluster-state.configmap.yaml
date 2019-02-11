@@ -23,13 +23,13 @@ data:
     \ 10.43.0.0/16\n  scheduler:\n    image: rancher/hyperkube:v1.11.5-rancher1\n\
     \    extra_args: {}\n    extra_binds: []\n    extra_env: []\n  kubelet:\n    image:\
     \ rancher/hyperkube:v1.11.5-rancher1\n    extra_args: {}\n    extra_binds:\n \
-    \   - /mongo:/mongo:rshared\n    extra_env: []\n    cluster_domain: cluster.local\n\
-    \    infra_container_image: rancher/pause-amd64:3.1\n    cluster_dns_server: 10.43.0.10\n\
-    \    fail_swap_on: false\n  kubeproxy:\n    image: rancher/hyperkube:v1.11.5-rancher1\n\
-    \    extra_args: {}\n    extra_binds: []\n    extra_env: []\nnetwork:\n  plugin:\
-    \ canal\n  options:\n    canal_flannel_backend_type: vxlan\n    flannelBackendType:\
-    \ vxlan\nauthentication:\n  strategy: x509\n  options: {}\n  sans: []\naddons:\
-    \ \"\"\naddons_include: []\nsystem_images:\n  etcd: rancher/coreos-etcd:v3.2.18\n\
+    \   - /mongo:/mongo:rshared\n    - /postgres:/postgres:rshared\n    extra_env:\
+    \ []\n    cluster_domain: cluster.local\n    infra_container_image: rancher/pause-amd64:3.1\n\
+    \    cluster_dns_server: 10.43.0.10\n    fail_swap_on: false\n  kubeproxy:\n \
+    \   image: rancher/hyperkube:v1.11.5-rancher1\n    extra_args: {}\n    extra_binds:\
+    \ []\n    extra_env: []\nnetwork:\n  plugin: canal\n  options:\n    canal_flannel_backend_type:\
+    \ vxlan\n    flannelBackendType: vxlan\nauthentication:\n  strategy: x509\n  options:\
+    \ {}\n  sans: []\naddons: \"\"\naddons_include: []\nsystem_images:\n  etcd: rancher/coreos-etcd:v3.2.18\n\
     \  alpine: rancher/rke-tools:v0.1.15\n  nginx_proxy: rancher/rke-tools:v0.1.15\n\
     \  cert_downloader: rancher/rke-tools:v0.1.15\n  kubernetes_services_sidecar:\
     \ rancher/rke-tools:v0.1.15\n  kubedns: rancher/k8s-dns-kube-dns-amd64:1.14.10\n\
