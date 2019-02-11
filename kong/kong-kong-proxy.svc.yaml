@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":30170,"protocol":"TCP","serviceName":"kong:kong-kong-proxy","allNodes":true},{"addresses":["51.77.136.161"],"port":30858,"protocol":"TCP","serviceName":"kong:kong-kong-proxy","allNodes":true}]'
+  labels:
+    app: kong
+    chart: kong-0.9.2
+    heritage: Tiller
+    io.cattle.field/appId: kong
+    release: kong
+  name: kong-kong-proxy
+  namespace: kong
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: kong-proxy
+    nodePort: 30170
+    port: 80
+    protocol: TCP
+    targetPort: 8000
+  - name: kong-proxy-tls
+    nodePort: 30858
+    port: 443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: kong
+    component: app
+    release: kong
+  sessionAffinity: None
+  type: NodePort
