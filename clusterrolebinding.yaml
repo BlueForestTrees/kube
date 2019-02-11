@@ -343,18 +343,6 @@ items:
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
-    name: kong-ingress-clusterrole-nisa-binding
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: kong-ingress-clusterrole
-  subjects:
-  - kind: ServiceAccount
-    name: kong-serviceaccount
-    namespace: kong
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
     name: kube-backup
   roleRef:
     apiGroup: rbac.authorization.k8s.io
