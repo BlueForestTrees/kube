@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  USER_BASE_URL: http://user.bf.svc.cluster.local:80
+kind: ConfigMap
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+  labels:
+    cattle.io/creator: norman
+  name: user
+  namespace: imports

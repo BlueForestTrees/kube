@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  mappings.yaml: 'mappings: ''{"p-g5rmx":"34592"}''
+
+    '
+kind: ConfigMap
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: proxy-mappings
+  namespace: cattle-pipeline

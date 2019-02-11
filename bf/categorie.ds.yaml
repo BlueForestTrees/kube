@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
+  name: categorie
+  namespace: bf
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: '2018-12-08T17:28:41Z'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
+    spec:
+      containers:
+      - envFrom:
+        - secretRef:
+            name: mongo
+            optional: false
+        - configMapRef:
+            name: bf
+            optional: false
+        image: blueforest/categorie:1.0.2
+        imagePullPolicy: Always
+        name: categorie
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  templateGeneration: 1
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

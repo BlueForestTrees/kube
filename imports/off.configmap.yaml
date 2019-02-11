@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  DB_CONNECTION_STRING_OFF: mongodb://off-import-mongo/off
+kind: ConfigMap
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+  labels:
+    cattle.io/creator: norman
+  name: 'off'
+  namespace: imports

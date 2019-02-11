@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["deployment:histoires:histoires-api"]'
+  labels:
+    cattle.io/creator: norman
+  name: ingress-be5313ebb9c80f028e8e54327454f290
+  namespace: histoires
+  ownerReferences:
+  - apiVersion: v1beta1/extensions
+    controller: true
+    kind: Ingress
+    name: histoires
+    uid: 245ecf09-0137-11e9-8468-fa163e4f813e
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    workloadID_ingress-be5313ebb9c80f028e8e54327454f290: 'true'
+  sessionAffinity: None
+  type: ClusterIP

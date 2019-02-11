@@ -1,0 +1,61 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: kube-backup
+  name: kube-state-backup
+  namespace: kube-system
+spec:
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          annotations:
+            cattle.io/timestamp: '2019-02-11T14:27:50Z'
+          creationTimestamp: null
+          labels:
+            app: kube-backup
+          name: kube-backup
+        spec:
+          containers:
+          - env:
+            - name: GIT_EMAIL
+              value: smedini@gmail.com
+            - name: GIT_REPO
+              value: git@github.com:BlueForestTrees/kube.git
+            - name: GIT_USERNAME
+              value: slimee
+            image: quay.io/plange/kube-backup:1.12.0-1
+            imagePullPolicy: Always
+            name: kube-state-backup
+            resources: {}
+            securityContext:
+              capabilities: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            volumeMounts:
+            - mountPath: /backup/.ssh
+              name: sshkey
+            - mountPath: /backup/
+              name: cache
+          dnsPolicy: ClusterFirst
+          restartPolicy: Never
+          schedulerName: default-scheduler
+          securityContext: {}
+          serviceAccount: kube-backup
+          serviceAccountName: kube-backup
+          terminationGracePeriodSeconds: 30
+          volumes:
+          - name: sshkey
+            secret:
+              defaultMode: 420
+              secretName: kube-backup-ssh
+          - emptyDir: {}
+            name: cache
+  schedule: '* * * * *'
+  successfulJobsHistoryLimit: 3
+  suspend: false

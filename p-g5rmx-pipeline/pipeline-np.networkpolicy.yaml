@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: pipeline-np
+  namespace: p-g5rmx-pipeline
+spec:
+  ingress:
+  - {}
+  podSelector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - jenkins
+      - minio
+  policyTypes:
+  - Ingress

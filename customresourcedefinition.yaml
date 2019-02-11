@@ -1,0 +1,563 @@
+apiVersion: v1
+items:
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: bgpconfigurations.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: BGPConfiguration
+      listKind: BGPConfigurationList
+      plural: bgpconfigurations
+      singular: bgpconfiguration
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: BGPConfiguration
+      listKind: BGPConfigurationList
+      plural: bgpconfigurations
+      singular: bgpconfiguration
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations:
+      helm.sh/hook: crd-install
+      helm.sh/hook-delete-policy: before-hook-creation
+    labels:
+      app: cert-manager
+      chart: cert-manager-v0.4.1
+      heritage: Tiller
+      io.cattle.field/appId: cert-manager
+      release: cert-manager
+    name: certificates.certmanager.k8s.io
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: certmanager.k8s.io
+    names:
+      kind: Certificate
+      listKind: CertificateList
+      plural: certificates
+      shortNames:
+      - cert
+      - certs
+      singular: certificate
+    scope: Namespaced
+    version: v1alpha1
+    versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: Certificate
+      listKind: CertificateList
+      plural: certificates
+      shortNames:
+      - cert
+      - certs
+      singular: certificate
+    conditions:
+    - lastTransitionTime: '2018-12-10T13:09:22Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1alpha1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: clusterinformations.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: ClusterInformation
+      listKind: ClusterInformationList
+      plural: clusterinformations
+      singular: clusterinformation
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: ClusterInformation
+      listKind: ClusterInformationList
+      plural: clusterinformations
+      singular: clusterinformation
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations:
+      helm.sh/hook: crd-install
+      helm.sh/hook-delete-policy: before-hook-creation
+    labels:
+      app: cert-manager
+      chart: cert-manager-v0.4.1
+      heritage: Tiller
+      io.cattle.field/appId: cert-manager
+      release: cert-manager
+    name: clusterissuers.certmanager.k8s.io
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: certmanager.k8s.io
+    names:
+      kind: ClusterIssuer
+      listKind: ClusterIssuerList
+      plural: clusterissuers
+      singular: clusterissuer
+    scope: Cluster
+    version: v1alpha1
+    versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: ClusterIssuer
+      listKind: ClusterIssuerList
+      plural: clusterissuers
+      singular: clusterissuer
+    conditions:
+    - lastTransitionTime: '2018-12-10T13:09:22Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1alpha1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: felixconfigurations.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: FelixConfiguration
+      listKind: FelixConfigurationList
+      plural: felixconfigurations
+      singular: felixconfiguration
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: FelixConfiguration
+      listKind: FelixConfigurationList
+      plural: felixconfigurations
+      singular: felixconfiguration
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: globalnetworkpolicies.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: GlobalNetworkPolicy
+      listKind: GlobalNetworkPolicyList
+      plural: globalnetworkpolicies
+      singular: globalnetworkpolicy
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: GlobalNetworkPolicy
+      listKind: GlobalNetworkPolicyList
+      plural: globalnetworkpolicies
+      singular: globalnetworkpolicy
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: globalnetworksets.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: GlobalNetworkSet
+      listKind: GlobalNetworkSetList
+      plural: globalnetworksets
+      singular: globalnetworkset
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: GlobalNetworkSet
+      listKind: GlobalNetworkSetList
+      plural: globalnetworksets
+      singular: globalnetworkset
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: hostendpoints.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: HostEndpoint
+      listKind: HostEndpointList
+      plural: hostendpoints
+      singular: hostendpoint
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: HostEndpoint
+      listKind: HostEndpointList
+      plural: hostendpoints
+      singular: hostendpoint
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: ippools.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: IPPool
+      listKind: IPPoolList
+      plural: ippools
+      singular: ippool
+    scope: Cluster
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: IPPool
+      listKind: IPPoolList
+      plural: ippools
+      singular: ippool
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations:
+      helm.sh/hook: crd-install
+    labels:
+      app: cert-manager
+      chart: cert-manager-v0.4.1
+      heritage: Tiller
+      io.cattle.field/appId: cert-manager
+      release: cert-manager
+    name: issuers.certmanager.k8s.io
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: certmanager.k8s.io
+    names:
+      kind: Issuer
+      listKind: IssuerList
+      plural: issuers
+      singular: issuer
+    scope: Namespaced
+    version: v1alpha1
+    versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: Issuer
+      listKind: IssuerList
+      plural: issuers
+      singular: issuer
+    conditions:
+    - lastTransitionTime: '2018-12-10T13:09:22Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1alpha1
+- apiVersion: apiextensions.k8s.io/v1beta1
+  kind: CustomResourceDefinition
+  metadata:
+    annotations: {}
+    name: networkpolicies.crd.projectcalico.org
+  spec:
+    additionalPrinterColumns:
+    - JSONPath: .metadata.creationTimestamp
+      description: 'CreationTimestamp is a timestamp representing the server time
+        when this object was created. It is not guaranteed to be set in happens-before
+        order across separate operations. Clients may not set this value. It is represented
+        in RFC3339 form and is in UTC.
+
+
+        Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata'
+      name: Age
+      type: date
+    group: crd.projectcalico.org
+    names:
+      kind: NetworkPolicy
+      listKind: NetworkPolicyList
+      plural: networkpolicies
+      singular: networkpolicy
+    scope: Namespaced
+    version: v1
+    versions:
+    - name: v1
+      served: true
+      storage: true
+  status:
+    acceptedNames:
+      kind: NetworkPolicy
+      listKind: NetworkPolicyList
+      plural: networkpolicies
+      singular: networkpolicy
+    conditions:
+    - lastTransitionTime: '2018-12-07T17:16:30Z'
+      message: no conflicts found
+      reason: NoConflicts
+      status: 'True'
+      type: NamesAccepted
+    - lastTransitionTime: null
+      message: the initial names have been accepted
+      reason: InitialNamesAccepted
+      status: 'True'
+      type: Established
+    storedVersions:
+    - v1
+kind: List
+metadata:
+  resourceVersion: ''
+  selfLink: ''

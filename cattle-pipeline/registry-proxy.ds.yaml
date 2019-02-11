@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: registry-proxy
+  namespace: cattle-pipeline
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: registry-proxy
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: registry-proxy
+      name: registry-proxy
+    spec:
+      containers:
+      - command:
+        - nginx-proxy
+        image: rancher/pipeline-tools:v0.1.0
+        imagePullPolicy: IfNotPresent
+        name: registry-proxy
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /opt/mapping/
+          name: mappings
+        - mountPath: /opt/crt/
+          name: crt
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: mappings.yaml
+            path: mappings.yaml
+          name: proxy-mappings
+        name: mappings
+      - name: crt
+        secret:
+          defaultMode: 420
+          secretName: registry-ca-crt
+  templateGeneration: 1
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+    field.cattle.io/ingressState: '{"aGlzdG9pcmVzL2hpc3RvaXJlcy9oaXN0b2lyZXMueHl6Ly84MA==":"deployment:histoires:histoires-web","aGlzdG9pcmVzL2hpc3RvaXJlcy9oaXN0b2lyZXMueHl6Ly9hcGkvODA4MA==":"deployment:histoires:histoires-api"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"histoires:ingress-be5313ebb9c80f028e8e54327454f290","ingressName":"histoires:histoires","hostname":"histoires.xyz","path":"/api","allNodes":true},{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"histoires:ingress-5d2e64692bcb6e759c61fb068a1d6b0b","ingressName":"histoires:histoires","hostname":"histoires.xyz","allNodes":true}]'
+  labels:
+    cattle.io/creator: norman
+  name: histoires
+  namespace: histoires
+spec:
+  rules:
+  - host: histoires.xyz
+    http:
+      paths:
+      - backend:
+          serviceName: ingress-be5313ebb9c80f028e8e54327454f290
+          servicePort: 8080
+        path: /api
+      - backend:
+          serviceName: ingress-5d2e64692bcb6e759c61fb068a1d6b0b
+          servicePort: 80
