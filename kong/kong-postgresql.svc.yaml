@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: postgresql
+    chart: postgresql-3.9.1
+    heritage: Tiller
+    io.cattle.field/appId: kong
+    release: kong
+  name: kong-postgresql
+  namespace: kong
+spec:
+  ports:
+  - name: postgresql
+    port: 5432
+    protocol: TCP
+    targetPort: postgresql
+  selector:
+    app: postgresql
+    release: kong
+    role: master
+  sessionAffinity: None
+  type: ClusterIP
