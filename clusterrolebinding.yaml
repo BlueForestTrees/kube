@@ -117,6 +117,7 @@ items:
       2cf9f2af-fa45-11e8-9073-0242ac110002: owner-user
       6f8de3e7-fa43-11e8-9073-0242ac110002: owner-user
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
+      9df79bd6-2e0e-11e9-a77e-0242ac110002: owner-user
       cattle.io/creator: norman
       cc47d516-fc7d-11e8-8283-0242ac110002: owner-user
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
@@ -137,6 +138,7 @@ items:
       2cf9f2af-fa45-11e8-9073-0242ac110002: owner-user
       6f8de3e7-fa43-11e8-9073-0242ac110002: owner-user
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
+      9df79bd6-2e0e-11e9-a77e-0242ac110002: owner-user
       cattle.io/creator: norman
       cc47d516-fc7d-11e8-8283-0242ac110002: owner-user
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
@@ -177,6 +179,22 @@ items:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
     name: p-bst62-namespaces-edit
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: user-5dn6d
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    generateName: clusterrolebinding-
+    labels:
+      9df79bd6-2e0e-11e9-a77e-0242ac110002: owner-user
+      cattle.io/creator: norman
+    name: clusterrolebinding-fwdzc
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: p-bznsc-namespaces-edit
   subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User
@@ -322,6 +340,18 @@ items:
   - kind: ServiceAccount
     name: rke-job-deployer
     namespace: kube-system
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: kong-ingress-clusterrole-nisa-binding
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: kong-ingress-clusterrole
+  subjects:
+  - kind: ServiceAccount
+    name: kong-serviceaccount
+    namespace: kong
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:

@@ -172,6 +172,23 @@ items:
   kind: Namespace
   metadata:
     annotations:
+      cattle.io/status: '{"Conditions":[{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-02-11T15:05:19Z"},{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-02-11T15:05:19Z"}]}'
+      field.cattle.io/projectId: c-5qdp4:p-bznsc
+      lifecycle.cattle.io/create.namespace-auth: 'true'
+    finalizers:
+    - controller.cattle.io/namespace-auth
+    labels:
+      field.cattle.io/projectId: p-bznsc
+    name: kong
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    annotations:
       cattle.io/status: '{"Conditions":[{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2018-12-07T17:16:54Z"},{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2018-12-07T17:16:59Z"}]}'
       field.cattle.io/projectId: c-5qdp4:p-6mbpq
       lifecycle.cattle.io/create.namespace-auth: 'true'
