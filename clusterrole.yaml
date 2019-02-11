@@ -764,6 +764,40 @@ items:
   kind: ClusterRole
   metadata:
     annotations:
+      authz.cluster.auth.io/project-namespaces: p-bznsc-namespaces-edit
+    labels:
+      cattle.io/creator: norman
+    name: p-bznsc-namespaces-edit
+  rules:
+  - apiGroups:
+    - ''
+    resourceNames:
+    - kong
+    resources:
+    - namespaces
+    verbs:
+    - '*'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      authz.cluster.auth.io/project-namespaces: p-bznsc-namespaces-readonly
+    labels:
+      cattle.io/creator: norman
+    name: p-bznsc-namespaces-readonly
+  rules:
+  - apiGroups:
+    - ''
+    resourceNames:
+    - kong
+    resources:
+    - namespaces
+    verbs:
+    - get
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
       authz.cluster.auth.io/project-namespaces: p-g5rmx-namespaces-edit
     labels:
       cattle.io/creator: norman
