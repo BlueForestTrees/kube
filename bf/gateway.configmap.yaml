@@ -4,7 +4,7 @@ data:
     \  1024;\n}\n\nhttp {\n    log_format correlationId '$remote_addr - $remote_user\
     \ [$time_local] '\n        '\"$request\" $status $body_bytes_sent '\n        '\"\
     $http_referer\" \"$http_user_agent\" \"$http_x_correlation_id\"';\n\n\n    lua_package_path\
-    \ \"/usr/local/openresty/nginx/conf/lua/?.lua;;\";\n    include       mime.types;\n\
+    \ \"/usr/local/openresty/nginx/bf/lua/?.lua;;\";\n    include       ../bf/mime.types;\n\
     \    default_type  application/octet-stream;\n\n    sendfile        on;\n    keepalive_timeout\
     \  65;\n    gzip  on;\n\n    server {\n        listen 80;\n        listen [::]:80;\n\
     \        root /var/www;\n        index index.html;\n        location /api/user\

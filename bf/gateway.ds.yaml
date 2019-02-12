@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-02-12T09:39:45Z'
+        cattle.io/timestamp: '2019-02-12T10:12:29Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-gateway
@@ -40,7 +40,6 @@ spec:
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
-          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -68,7 +67,7 @@ spec:
           name: gateway
           optional: false
         name: conf
-  templateGeneration: 24
+  templateGeneration: 25
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
