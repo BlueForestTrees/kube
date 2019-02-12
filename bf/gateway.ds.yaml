@@ -62,10 +62,13 @@ spec:
       volumes:
       - configMap:
           defaultMode: 420
+          items:
+          - key: nginx.conf
+            path: nginx.conf
           name: gateway
           optional: false
         name: conf
-  templateGeneration: 23
+  templateGeneration: 24
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
