@@ -49,10 +49,9 @@ spec:
         terminationMessagePolicy: File
         tty: true
         volumeMounts:
-        - mountPath: nginx.conf
+        - mountPath: usr/local/openresty/nginx/conf
           name: conf
           readOnly: true
-          subPath: usr/local/openresty/nginx/conf
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -62,11 +61,11 @@ spec:
       terminationGracePeriodSeconds: 30
       volumes:
       - configMap:
-          defaultMode: 256
+          defaultMode: 420
           name: gateway
           optional: false
         name: conf
-  templateGeneration: 22
+  templateGeneration: 23
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
