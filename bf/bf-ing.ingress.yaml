@@ -5,7 +5,7 @@ metadata:
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     field.cattle.io/creatorId: user-5dn6d
     field.cattle.io/ingressState: '{"YmYtaW5nL2JmL2ludGVnLmJsdWVmb3Jlc3Qub3JnLy8vODA=":"daemonset:bf:web","YmYtaW5nL2JmL2ludGVnLmJsdWVmb3Jlc3Qub3JnLy9hcGkvODA=":"daemonset:bf:gateway","ZmV6OTQ4":"bf:fez948"}'
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-06d812feeaab9b03f4822034aad73860","ingressName":"bf:bf-ing","hostname":"integ.blueforest.org","path":"/api","allNodes":true},{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-1dadb534f3dd2bcbe403c04ce2cfdf94","ingressName":"bf:bf-ing","hostname":"integ.blueforest.org","path":"/","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"bf:ingress-06d812feeaab9b03f4822034aad73860","ingressName":"bf:bf-ing","hostname":"integ.blueforest.org","path":"/api","allNodes":true},{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"bf:ingress-1dadb534f3dd2bcbe403c04ce2cfdf94","ingressName":"bf:bf-ing","hostname":"integ.blueforest.org","path":"/","allNodes":true}]'
     kubernetes.io/tls-acme: '"true"'
   labels:
     cattle.io/creator: norman
@@ -26,5 +26,5 @@ spec:
         path: /api
   tls:
   - hosts:
-    - integ.blueforest.org
+    - blueforest.org
     secretName: fez948
