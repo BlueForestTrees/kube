@@ -3,6 +3,7 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
+    field.cattle.io/publicEndpoints: 'null'
   labels:
     cattle.io/creator: norman
     workload.user.cattle.io/workloadselector: daemonSet-bf-categorie

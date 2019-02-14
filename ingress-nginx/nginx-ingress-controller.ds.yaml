@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2018-12-17T08:13:54Z'
+        cattle.io/timestamp: '2019-02-14T17:14:17Z'
         field.cattle.io/ports: '[[{"containerPort":80,"dnsName":"nginx-ingress-controller-","name":"http","protocol":"TCP","sourcePort":0},{"containerPort":443,"dnsName":"nginx-ingress-controller-","name":"https","protocol":"TCP","sourcePort":0}]]'
         prometheus.io/port: '10254'
         prometheus.io/scrape: 'true'
@@ -100,6 +100,6 @@ spec:
       serviceAccount: nginx-ingress-serviceaccount
       serviceAccountName: nginx-ingress-serviceaccount
       terminationGracePeriodSeconds: 30
-  templateGeneration: 2
+  templateGeneration: 5
   updateStrategy:
     type: OnDelete
