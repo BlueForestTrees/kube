@@ -4,19 +4,6 @@ items:
   kind: ClusterRoleBinding
   metadata:
     annotations: {}
-    name: admin-user
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: cluster-admin
-  subjects:
-  - kind: ServiceAccount
-    name: admin-user
-    namespace: kube-system
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    annotations: {}
     name: canal-calico
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -208,6 +195,21 @@ items:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
     name: p-bznsc-namespaces-edit
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: user-5dn6d
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    generateName: clusterrolebinding-
+    labels:
+      cattle.io/creator: norman
+    name: clusterrolebinding-nhgkr
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: p-tg2xh-namespaces-edit
   subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User
