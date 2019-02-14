@@ -2,10 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:gateway"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:web"]'
   labels:
     cattle.io/creator: norman
-  name: ingress-06d812feeaab9b03f4822034aad73860
+  name: ingress-a08f5f00fc38a36b135f10009d58e0fc
   namespace: bf
   ownerReferences:
   - apiVersion: v1beta1/extensions
@@ -19,6 +19,6 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    workloadID_ingress-06d812feeaab9b03f4822034aad73860: 'true'
+    workloadID_ingress-a08f5f00fc38a36b135f10009d58e0fc: 'true'
   sessionAffinity: None
   type: ClusterIP
