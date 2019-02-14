@@ -1,0 +1,69 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: daemonSet-bf-game
+  name: game
+  namespace: bf
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: daemonSet-bf-game
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: '2019-02-14T20:00:42Z'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: daemonSet-bf-game
+    spec:
+      containers:
+      - env:
+        - name: DB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              key: DB_CONNECTION_STRING
+              name: mongo
+              optional: false
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: bf
+              optional: false
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              key: DEBUG
+              name: log
+              optional: false
+        image: blueforest/game:0.0.1
+        imagePullPolicy: Always
+        name: game
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: hub
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  templateGeneration: 1
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
