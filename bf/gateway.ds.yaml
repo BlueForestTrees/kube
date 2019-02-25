@@ -3,7 +3,7 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-ee204bf032e5a331b13a5e7eb54261e7","ingressName":"bf:bf-ing","hostname":"blueforest.org","path":"/api","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-ee204bf032e5a331b13a5e7eb54261e7","ingressName":"bf:bf-ing","hostname":"blueforest.org","path":"/api","allNodes":true}]'
   labels:
     cattle.io/creator: norman
     workload.user.cattle.io/workloadselector: daemonSet-bf-gateway
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-02-19T10:17:34Z'
+        cattle.io/timestamp: '2019-02-25T15:48:02Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-gateway
@@ -67,7 +67,7 @@ spec:
           name: gateway
           optional: false
         name: conf
-  templateGeneration: 27
+  templateGeneration: 28
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
