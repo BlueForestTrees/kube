@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":30711,"protocol":"TCP","serviceName":"kong:kong-kong-admin","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":31169,"protocol":"TCP","serviceName":"kong:kong-kong-admin","allNodes":true}]'
   labels:
     app: kong
     chart: kong-0.9.3
@@ -15,7 +15,7 @@ spec:
   externalTrafficPolicy: Cluster
   ports:
   - name: kong-admin
-    nodePort: 30711
+    nodePort: 31169
     port: 8444
     protocol: TCP
     targetPort: 8444

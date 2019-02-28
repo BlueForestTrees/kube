@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-02-12T09:11:53Z'
+        cattle.io/timestamp: '2019-02-25T15:46:42Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-tree
@@ -36,7 +36,7 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/tree:1.1.3
+        image: blueforest/tree:1.1.7
         imagePullPolicy: Always
         name: tree
         resources: {}
@@ -57,7 +57,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 13
+  templateGeneration: 15
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

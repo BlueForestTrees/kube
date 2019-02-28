@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-02-10T13:44:44Z'
+        cattle.io/timestamp: '2019-02-25T17:28:23Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-user
@@ -42,7 +42,7 @@ spec:
         - secretRef:
             name: user
             optional: false
-        image: blueforest/user:1.1.0
+        image: blueforest/user:1.1.2
         imagePullPolicy: Always
         name: user
         resources: {}
@@ -63,7 +63,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 9
+  templateGeneration: 11
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

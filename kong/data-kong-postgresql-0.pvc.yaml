@@ -19,4 +19,4 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: local-storage
-  volumeName: postgres-one
+  volumeName: postgres-two

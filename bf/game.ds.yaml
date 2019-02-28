@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-02-14T20:14:09Z'
+        cattle.io/timestamp: '2019-02-19T10:16:34Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-game
@@ -41,7 +41,7 @@ spec:
               key: DEBUG
               name: log
               optional: false
-        image: blueforest/game:0.0.1
+        image: blueforest/game:0.0.3
         imagePullPolicy: Always
         name: game
         resources: {}
@@ -62,7 +62,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 2
+  templateGeneration: 3
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

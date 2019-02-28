@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-02-12T09:13:22Z'
+        cattle.io/timestamp: '2019-02-25T15:45:56Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-impact
@@ -35,7 +35,7 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/attribut:1.1.1
+        image: blueforest/attribut:1.1.4
         imagePullPolicy: Always
         name: impact
         resources: {}
@@ -56,7 +56,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 4
+  templateGeneration: 6
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
