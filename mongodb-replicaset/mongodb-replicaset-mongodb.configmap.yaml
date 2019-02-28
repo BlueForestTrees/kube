@@ -1,13 +1,13 @@
 apiVersion: v1
 data:
-  mongod.conf: 'null
+  mongod.conf: '{}
 
     '
 kind: ConfigMap
 metadata:
   labels:
     app: mongodb-replicaset
-    chart: mongodb-replicaset-3.8.1
+    chart: mongodb-replicaset-3.9.2
     heritage: Tiller
     io.cattle.field/appId: mongodb-replicaset
     release: mongodb-replicaset

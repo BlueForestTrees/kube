@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     app: mongodb-replicaset
-    chart: mongodb-replicaset-3.8.1
+    chart: mongodb-replicaset-3.9.2
     heritage: Tiller
     io.cattle.field/appId: mongodb-replicaset
     release: mongodb-replicaset
@@ -21,10 +21,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: 68f97440ab2d2c538dd0b0748e5352565310a274666cbce79a465223e9b8055a
-        prometheus.io/path: /metrics
-        prometheus.io/port: '9216'
-        prometheus.io/scrape: 'true'
+        checksum/config: 1fc187b6d130111acfb8e5233ce74b5aeaba21dff4714cb34d05c2107290391d
       creationTimestamp: null
       labels:
         app: mongodb-replicaset
