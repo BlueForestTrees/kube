@@ -378,7 +378,7 @@ items:
   metadata:
     labels:
       app: kong
-      chart: kong-0.9.3
+      chart: kong-0.9.4
       heritage: Tiller
       io.cattle.field/appId: kong
       release: kong

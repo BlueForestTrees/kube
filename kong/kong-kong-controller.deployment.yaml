@@ -5,7 +5,7 @@ metadata:
     deployment.kubernetes.io/revision: '1'
   labels:
     app: kong
-    chart: kong-0.9.3
+    chart: kong-0.9.4
     component: controller
     heritage: Tiller
     io.cattle.field/appId: kong

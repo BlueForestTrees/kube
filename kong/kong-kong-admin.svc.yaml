@@ -5,7 +5,7 @@ metadata:
     field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":31169,"protocol":"TCP","serviceName":"kong:kong-kong-admin","allNodes":true}]'
   labels:
     app: kong
-    chart: kong-0.9.3
+    chart: kong-0.9.4
     heritage: Tiller
     io.cattle.field/appId: kong
     release: kong
