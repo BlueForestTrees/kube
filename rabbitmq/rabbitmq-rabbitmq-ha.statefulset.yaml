@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     app: rabbitmq-ha
-    chart: rabbitmq-ha-1.20.1
+    chart: rabbitmq-ha-1.21.0
     heritage: Tiller
     io.cattle.field/appId: rabbitmq
     release: rabbitmq
@@ -21,7 +21,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: fc8fc08541484fcce769166c06b946f4bb4624fedd0e3f80af4bd78e94879066
+        checksum/config: 61e8727c66a37947d55046ec366e70b9b30d164d1db7a85be2899f3deda3e450
       creationTimestamp: null
       labels:
         app: rabbitmq-ha
@@ -126,7 +126,9 @@ spec:
           name: data
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 100
       serviceAccount: rabbitmq-rabbitmq-ha
       serviceAccountName: rabbitmq-rabbitmq-ha
       terminationGracePeriodSeconds: 10
