@@ -3,36 +3,29 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":80,"protocol":"HTTP","serviceName":"draw:ingress-4b7348b346164f86a0032da148adf0c1","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/api","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":80,"protocol":"HTTP","serviceName":"draw:ingress-5091412d0b33a593c4061f313623113f","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/","allNodes":true}]'
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-draw-film
-  name: film
+    workload.user.cattle.io/workloadselector: daemonSet-draw-draw
+  name: draw
   namespace: draw
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-draw-film
+      workload.user.cattle.io/workloadselector: daemonSet-draw-draw
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-06T13:05:30Z'
+        cattle.io/timestamp: '2019-03-06T13:18:06Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-draw-film
+        workload.user.cattle.io/workloadselector: daemonSet-draw-draw
     spec:
       containers:
-      - envFrom:
-        - secretRef:
-            name: mongo
-            optional: false
-        - configMapRef:
-            name: api
-            optional: false
-        image: blueforest/film:2.0.1
+      - image: blueforest/draw:0.0.2
         imagePullPolicy: Always
-        name: film
+        name: draw
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -51,7 +44,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 3
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
