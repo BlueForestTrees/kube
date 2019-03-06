@@ -3,7 +3,7 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":80,"protocol":"HTTP","serviceName":"draw:ingress-4b7348b346164f86a0032da148adf0c1","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/api","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":443,"protocol":"HTTPS","serviceName":"draw:ingress-4b7348b346164f86a0032da148adf0c1","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/api","allNodes":true}]'
   labels:
     cattle.io/creator: norman
     workload.user.cattle.io/workloadselector: daemonSet-draw-film
