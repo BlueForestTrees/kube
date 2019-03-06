@@ -4,8 +4,8 @@ metadata:
   annotations:
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/ingressState: '{"ZHJhdy1jZXJ0":"draw:draw-cert","ZHJhdy9kcmF3L2RyYXcuYmx1ZWZvcmVzdC5vcmcvL2FwaS84MA==":"daemonset:draw:film","ZHJhdy9kcmF3L2RyYXcuYmx1ZWZvcmVzdC5vcmcvLy84MA==":"daemonset:draw:draw"}'
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":443,"protocol":"HTTPS","serviceName":"draw:ingress-5091412d0b33a593c4061f313623113f","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/","allNodes":true},{"addresses":["51.77.137.98"],"port":443,"protocol":"HTTPS","serviceName":"draw:ingress-4b7348b346164f86a0032da148adf0c1","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/api","allNodes":true}]'
+    field.cattle.io/ingressState: '{"ZHJhdy1jZXJ0":"draw:draw-cert","ZHJhdy9kcmF3L2RyYXcuYmx1ZWZvcmVzdC5vcmcvL2FwaS9maWxtLzgw":"daemonset:draw:film","ZHJhdy9kcmF3L2RyYXcuYmx1ZWZvcmVzdC5vcmcvLy84MA==":"daemonset:draw:draw"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":443,"protocol":"HTTPS","serviceName":"draw:ingress-5091412d0b33a593c4061f313623113f","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/","allNodes":true},{"addresses":["51.77.137.98"],"port":443,"protocol":"HTTPS","serviceName":"draw:ingress-c4175be79c7b11999d48c344c8c7ee28","ingressName":"draw:draw","hostname":"draw.blueforest.org","path":"/api/film","allNodes":true}]'
     kubernetes.io/tls-acme: '"true"'
   labels:
     cattle.io/creator: norman
@@ -21,9 +21,9 @@ spec:
           servicePort: 80
         path: /
       - backend:
-          serviceName: ingress-4b7348b346164f86a0032da148adf0c1
+          serviceName: ingress-c4175be79c7b11999d48c344c8c7ee28
           servicePort: 80
-        path: /api
+        path: /api/film
   tls:
   - hosts:
     - draw.blueforest.org
