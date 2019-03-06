@@ -95,6 +95,25 @@ items:
   kind: Namespace
   metadata:
     annotations:
+      cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-03-06T12:30:53Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-03-06T12:30:52Z"}]}'
+      field.cattle.io/creatorId: user-5dn6d
+      field.cattle.io/projectId: c-5qdp4:p-58rq9
+      lifecycle.cattle.io/create.namespace-auth: 'true'
+    finalizers:
+    - controller.cattle.io/namespace-auth
+    labels:
+      cattle.io/creator: norman
+      field.cattle.io/projectId: p-58rq9
+    name: draw
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    annotations:
       cattle.io/appIds: efk
       cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2018-12-10T13:16:53Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2018-12-10T13:16:52Z"}]}'
       field.cattle.io/creatorId: user-5dn6d

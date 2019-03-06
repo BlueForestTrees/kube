@@ -764,6 +764,7 @@ items:
     - ''
     resourceNames:
     - p-58rq9-pipeline
+    - draw
     resources:
     - namespaces
     verbs:
@@ -781,6 +782,7 @@ items:
     - ''
     resourceNames:
     - p-58rq9-pipeline
+    - draw
     resources:
     - namespaces
     verbs:
