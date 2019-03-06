@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: '1'
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":32433,"protocol":"TCP","serviceName":"kong:kong-kong-proxy","allNodes":true},{"addresses":["51.77.137.98"],"port":30866,"protocol":"TCP","serviceName":"kong:kong-kong-proxy","allNodes":true},{"addresses":["51.77.137.98"],"port":31169,"protocol":"TCP","serviceName":"kong:kong-kong-admin","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":32433,"protocol":"TCP","serviceName":"kong:kong-kong-proxy","allNodes":true},{"addresses":["51.77.136.161"],"port":30866,"protocol":"TCP","serviceName":"kong:kong-kong-proxy","allNodes":true},{"addresses":["51.77.136.161"],"port":31169,"protocol":"TCP","serviceName":"kong:kong-kong-admin","allNodes":true}]'
   labels:
     app: kong
     chart: kong-0.9.4

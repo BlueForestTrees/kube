@@ -9,4 +9,4 @@ metadata:
   labels:
     cattle.io/creator: norman
   name: api
-  namespace: p-58rq9-pipeline
+  namespace: draw
