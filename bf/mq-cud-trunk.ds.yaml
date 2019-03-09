@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-09T10:25:49Z'
+        cattle.io/timestamp: '2019-03-09T10:38:13Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-trunk
@@ -33,6 +33,15 @@ spec:
               key: DB_CONNECTION_STRING
               name: mongo
               optional: false
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: bf
+        envFrom:
+        - configMapRef:
+            name: log
+            optional: false
         image: blueforest/mq-upsert-delete:1.0.2
         imagePullPolicy: Always
         name: mq-cud-trunk
@@ -48,8 +57,14 @@ spec:
         terminationMessagePolicy: File
         tty: true
         volumeMounts:
-        - mountPath: /
+        - mountPath: /mq.json
           name: rabbit
+          readOnly: true
+          subPath: mq.json
+        - mountPath: /queue.json
+          name: queue
+          readOnly: true
+          subPath: queue.json
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -61,12 +76,14 @@ spec:
       - name: rabbit
         secret:
           defaultMode: 256
-          items:
-          - key: mq.json
-            path: mq.json
           optional: false
           secretName: rabbit
-  templateGeneration: 5
+      - configMap:
+          defaultMode: 256
+          name: queue
+          optional: false
+        name: queue
+  templateGeneration: 11
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
