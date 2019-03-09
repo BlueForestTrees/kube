@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-09T10:38:13Z'
+        cattle.io/timestamp: '2019-03-09T10:46:37Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-trunk
@@ -38,6 +38,7 @@ spec:
             configMapKeyRef:
               key: NODE_ENV
               name: bf
+              optional: false
         envFrom:
         - configMapRef:
             name: log
@@ -48,7 +49,6 @@ spec:
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
-          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -83,7 +83,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 11
+  templateGeneration: 15
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
