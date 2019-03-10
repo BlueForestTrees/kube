@@ -21,21 +21,19 @@ data:
     \ proxy_pass http://facet;\n        }\n        location /api/message {\n     \
     \       access_by_lua_block {\n                local gt = require \"gateway\"\n\
     \                gt:verifyToken({\"^P\",\"^D\"})\n            }\n            proxy_pass\
-    \ http://message;\n        }\n        location /api/damage {\n            access_by_lua_block\
+    \ http://message;\n        }\n        location /api/impact {\n            access_by_lua_block\
     \ {\n                local gt = require \"gateway\"\n                gt:verifyToken({\"\
-    ^P\",\"^D\"})\n            }\n            proxy_pass http://damage;\n        }\n\
-    \        location /api/impact {\n            access_by_lua_block {\n         \
-    \       local gt = require \"gateway\"\n                gt:verifyToken({\"^P\"\
-    ,\"^D\"})\n            }\n            proxy_pass http://impact;\n        }\n \
-    \       location /api/selection {\n            access_by_lua_block {\n       \
-    \         local gt = require \"gateway\"\n                gt:verifyToken({\"^P\"\
-    ,\"^D\"})\n            }\n            proxy_pass http://selection;\n        }\n\
-    \        location /api/info {\n            access_by_lua_block {\n           \
+    ^P\",\"^D\"})\n            }\n            proxy_pass http://impact;\n        }\n\
+    \        location /api/selection {\n            access_by_lua_block {\n      \
+    \          local gt = require \"gateway\"\n                gt:verifyToken({\"\
+    ^P\",\"^D\"})\n            }\n            proxy_pass http://selection;\n     \
+    \   }\n        location /api/info {\n            access_by_lua_block {\n     \
+    \           local gt = require \"gateway\"\n                gt:verifyToken({\"\
+    ^P\",\"^D\"})\n            }\n            proxy_pass http://info;\n        }\n\
+    \        location /api/game {\n            access_by_lua_block {\n           \
     \     local gt = require \"gateway\"\n                gt:verifyToken({\"^P\",\"\
-    ^D\"})\n            }\n            proxy_pass http://info;\n        }\n      \
-    \  location /api/game {\n            access_by_lua_block {\n                local\
-    \ gt = require \"gateway\"\n                gt:verifyToken({\"^P\",\"^D\"})\n\
-    \            }\n            proxy_pass http://game;\n        }\n    }\n}"
+    ^D\"})\n            }\n            proxy_pass http://game;\n        }\n    }\n\
+    }"
 kind: ConfigMap
 metadata:
   annotations:
