@@ -5,39 +5,47 @@ metadata:
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-facet
-  name: facet
+    workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impact
+  name: mq-cud-impact
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-facet
+      workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impact
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-10T11:11:51Z'
+        cattle.io/timestamp: '2019-03-10T09:28:01Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-facet
+        workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impact
     spec:
       containers:
       - env:
+        - name: DB_COLLECTION
+          value: impactCollection
         - name: NAME
-          value: facet
+          value: impact
+        - name: DB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              key: DB_CONNECTION_STRING
+              name: mongo
+              optional: false
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: bf
+              optional: false
         envFrom:
-        - secretRef:
-            name: mongo
-            optional: false
-        - configMapRef:
-            name: bf
-            optional: false
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/attribut:1.1.5
+        image: blueforest/mq-upsert-delete:1.0.2
         imagePullPolicy: Always
-        name: facet
+        name: mq-cud-impact
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -52,7 +60,12 @@ spec:
         volumeMounts:
         - mountPath: /mq.json
           name: rabbit
+          readOnly: true
           subPath: mq.json
+        - mountPath: /queue.json
+          name: queue
+          readOnly: true
+          subPath: queue.json
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -66,7 +79,12 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 9
+      - configMap:
+          defaultMode: 256
+          name: queue
+          optional: false
+        name: queue
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

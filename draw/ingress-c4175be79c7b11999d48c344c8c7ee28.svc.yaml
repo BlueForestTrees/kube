@@ -5,7 +5,7 @@ metadata:
     field.cattle.io/targetWorkloadIds: '["daemonset:draw:film"]'
   labels:
     cattle.io/creator: norman
-  name: ingress-4b7348b346164f86a0032da148adf0c1
+  name: ingress-c4175be79c7b11999d48c344c8c7ee28
   namespace: draw
   ownerReferences:
   - apiVersion: v1beta1/extensions
@@ -19,6 +19,6 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    workloadID_ingress-4b7348b346164f86a0032da148adf0c1: 'true'
+    workloadID_ingress-c4175be79c7b11999d48c344c8c7ee28: 'true'
   sessionAffinity: None
   type: ClusterIP

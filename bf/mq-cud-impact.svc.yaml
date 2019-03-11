@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:mq-cud-impact"]'
+    workload.cattle.io/targetWorkloadIdNoop: 'true'
+    workload.cattle.io/workloadPortBased: 'true'
+  labels:
+    cattle.io/creator: norman
+  name: mq-cud-impact
+  namespace: bf
+  ownerReferences:
+  - apiVersion: apps/v1beta2
+    controller: true
+    kind: daemonset
+    name: mq-cud-impact
+    uid: ce0c1c78-4316-11e9-8468-fa163e4f813e
+spec:
+  ports:
+  - name: default
+    port: 42
+    protocol: TCP
+    targetPort: 42
+  selector:
+    workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impact
+  sessionAffinity: None
+  type: ClusterIP
