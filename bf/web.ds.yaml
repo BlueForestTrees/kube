@@ -17,13 +17,13 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-15T20:53:07Z'
+        cattle.io/timestamp: '2019-03-16T21:03:43Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-web
     spec:
       containers:
-      - image: blueforest/web:2.0.1
+      - image: blueforest/web:2.0.2
         imagePullPolicy: Always
         name: web
         resources: {}
@@ -44,7 +44,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 26
+  templateGeneration: 27
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
