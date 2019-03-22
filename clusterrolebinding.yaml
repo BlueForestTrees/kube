@@ -394,24 +394,6 @@ items:
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
-    labels:
-      app: kong
-      chart: kong-0.9.4
-      heritage: Tiller
-      io.cattle.field/appId: kong
-      release: kong
-    name: kong-kong
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: kong-kong
-  subjects:
-  - kind: ServiceAccount
-    name: kong-kong
-    namespace: kong
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
     name: kube-backup
   roleRef:
     apiGroup: rbac.authorization.k8s.io
