@@ -5,7 +5,7 @@ data:
     : \"$request_method\", \"status\":$status, \"vhost\": \"$host\", \"path\": \"\
     $uri\",\"request_query\": \"$args\", \"request_length\": $request_length, \"duration\"\
     : $request_time, \"bytes_sent\": $bytes_sent, \"request_proto\": \"$server_protocol\"\
-    , \"http_user_agent\":\"$http_user_agent\" }'\n\n\n    lua_package_path \"/usr/local/openresty/nginx/bf/lua/?.lua;;\"\
+    , \"http_user_agent\":\"$http_user_agent\" }';\n\n\n    lua_package_path \"/usr/local/openresty/nginx/bf/lua/?.lua;;\"\
     ;\n    include       ../bf/mime.types;\n    default_type  application/octet-stream;\n\
     \n    sendfile        on;\n    keepalive_timeout  65;\n    gzip  on;\n\n    server\
     \ {\n        listen 80;\n        listen [::]:80;\n        root /var/www;\n   \
