@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-23T13:53:30Z'
+        cattle.io/timestamp: '2019-03-23T14:24:12Z'
         field.cattle.io/ports: '[[{"containerPort":9300,"dnsName":"efk-elasticsearch-","name":"transport","protocol":"TCP","sourcePort":0},{"containerPort":9200,"dnsName":"efk-elasticsearch-","name":"http","protocol":"TCP","sourcePort":0}]]'
       creationTimestamp: null
       labels:
