@@ -23,6 +23,9 @@ spec:
   serviceName: efk-elasticsearch
   template:
     metadata:
+      annotations:
+        cattle.io/timestamp: '2019-03-23T13:53:30Z'
+        field.cattle.io/ports: '[[{"containerPort":9300,"dnsName":"efk-elasticsearch-","name":"transport","protocol":"TCP","sourcePort":0},{"containerPort":9200,"dnsName":"efk-elasticsearch-","name":"http","protocol":"TCP","sourcePort":0}]]'
       creationTimestamp: null
       labels:
         app: elasticsearch
@@ -42,12 +45,14 @@ spec:
             weight: 1
       containers:
       - env:
+        - name: ES_JAVA_OPTS
+          value: -Djava.net.preferIPv4Stack=true -Xms512m -Xmx512m
         - name: cluster.name
           value: efk-cluster
-        - name: discovery.zen.ping.unicast.hosts
-          value: efk-elasticsearch
         - name: discovery.zen.minimum_master_nodes
           value: '2'
+        - name: discovery.zen.ping.unicast.hosts
+          value: efk-elasticsearch
         - name: KUBERNETES_NAMESPACE
           valueFrom:
             fieldRef:
@@ -58,8 +63,6 @@ spec:
             resourceFieldRef:
               divisor: '0'
               resource: limits.cpu
-        - name: ES_JAVA_OPTS
-          value: -Djava.net.preferIPv4Stack=true -Xms512m -Xmx512m
         image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
         imagePullPolicy: IfNotPresent
         name: elasticsearch
@@ -86,6 +89,8 @@ spec:
           requests:
             cpu: 25m
             memory: 512Mi
+        securityContext:
+          capabilities: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
