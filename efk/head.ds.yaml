@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"efk:ingress-19f429612d12f3574e106fae7c442498","ingressName":"efk:head","hostname":"head.efk.51.77.136.161.xip.io","allNodes":true}]'
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: daemonSet-efk-head
+  name: head
+  namespace: efk
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: daemonSet-efk-head
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: '2019-03-23T14:32:19Z'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: daemonSet-efk-head
+    spec:
+      containers:
+      - image: mobz/elasticsearch-head:5-alpine
+        imagePullPolicy: Always
+        name: head
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  templateGeneration: 1
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
