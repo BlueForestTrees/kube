@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-23T16:23:35Z'
+        cattle.io/timestamp: '2019-03-23T16:39:07Z'
         checksum/config: 63c1132f100b581835ac5bc4c1a81ea8252b7e5255c233adb15316613a58fb6f
       creationTimestamp: null
       labels:
@@ -61,7 +61,7 @@ spec:
           defaultMode: 420
           name: efk-fluent-bit-config
         name: config
-  templateGeneration: 45
+  templateGeneration: 47
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
