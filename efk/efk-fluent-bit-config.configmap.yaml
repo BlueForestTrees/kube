@@ -4,16 +4,13 @@ data:
     \    info\n    Parsers_File parsers.conf\n\n[INPUT]\n    Name             tail\n\
     \    Path             /var/log/containers/gateway*.log\n    Parser           docker\n\
     \    Tag              kube.gateway.*\n    Refresh_Interval 5\n    Mem_Buf_Limit\
-    \    5MB\n    Skip_Long_Lines  On\t\n\n[INPUT]\n    Name             tail\n  \
-    \  Path             /var/log/containers/nginx-ingress*.log\n    Parser       \
-    \    docker\n    Tag              kube.ingress.*\n    Refresh_Interval 5\n   \
-    \ Mem_Buf_Limit    5MB\n    Skip_Long_Lines  On\n\n[FILTER]\n    Name        \
-    \        kubernetes\n    Match               *\n    Merge_Log         On\n   \
-    \ Kube_URL            https://kubernetes.default.svc:443\n    Kube_CA_File   \
-    \     /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    Kube_Token_File\
-    \     /var/run/secrets/kubernetes.io/serviceaccount/token\n\n[OUTPUT]\n    Name\
-    \  es\n    Match *\n    Host  efk-elasticsearch\n    Port  9200\n    Logstash_Format\
-    \ On\n    Retry_Limit False\n    Type  flb_type\n    Logstash_Prefix bf"
+    \    5MB\n    Skip_Long_Lines  On\t\n\n[FILTER]\n    Name                kubernetes\n\
+    \    Match               *\n    Merge_Log         On\n    Kube_URL           \
+    \ https://kubernetes.default.svc:443\n    Kube_CA_File        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n\
+    \    Kube_Token_File     /var/run/secrets/kubernetes.io/serviceaccount/token\n\
+    \n[OUTPUT]\n    Name  es\n    Match *\n    Host  efk-elasticsearch\n    Port \
+    \ 9200\n    Logstash_Format On\n    Retry_Limit False\n    Type  flb_type\n  \
+    \  Logstash_Prefix bf"
   parsers.conf: ''
 kind: ConfigMap
 metadata:
