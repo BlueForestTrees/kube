@@ -3,29 +3,32 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-a08f5f00fc38a36b135f10009d58e0fc","ingressName":"bf:bf-ing","hostname":"blueforest.org","path":"/","allNodes":true}]'
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-web
-  name: web
+    workload.user.cattle.io/workloadselector: daemonSet-bf-film
+  name: film
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-web
+      workload.user.cattle.io/workloadselector: daemonSet-bf-film
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-25T21:34:39Z'
+        cattle.io/timestamp: '2019-03-25T21:38:12Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-web
+        workload.user.cattle.io/workloadselector: daemonSet-bf-film
     spec:
       containers:
-      - image: blueforest/web:2.0.10
+      - envFrom:
+        - secretRef:
+            name: mongo
+            optional: false
+        image: blueforest/film:2.0.1
         imagePullPolicy: Always
-        name: web
+        name: film
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -44,7 +47,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 34
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

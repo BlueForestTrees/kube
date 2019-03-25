@@ -36,7 +36,10 @@ data:
     \          proxy_pass http://info;\n        }\n        location /api/game {\n\
     \            access_by_lua_block {\n                local gt = require \"gateway\"\
     \n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n           \
-    \ proxy_pass http://game;\n        }\n    }\n}"
+    \ proxy_pass http://game;\n        }\n\t\tlocation /api/film {\n            access_by_lua_block\
+    \ {\n                local gt = require \"gateway\"\n                gt:verifyToken({\"\
+    ^P\",\"^D\"})\n            }\n            proxy_pass http://film;\n        }\n\
+    \    }\n}"
 kind: ConfigMap
 metadata:
   annotations:
