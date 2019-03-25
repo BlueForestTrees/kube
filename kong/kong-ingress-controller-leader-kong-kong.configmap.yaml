@@ -1,5 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kong-ingress-controller-leader-kong-kong
-  namespace: kong
