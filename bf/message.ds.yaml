@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2018-12-08T17:36:37Z'
+        cattle.io/timestamp: '2019-03-27T09:36:22Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-message
@@ -29,7 +29,7 @@ spec:
         - configMapRef:
             name: bf
             optional: false
-        image: blueforest/message:1.0.6
+        image: blueforest/message:1.0.7
         imagePullPolicy: Always
         name: message
         resources: {}
@@ -44,11 +44,13 @@ spec:
         terminationMessagePolicy: File
         tty: true
       dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: hub
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 1
+  templateGeneration: 2
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
