@@ -14,7 +14,7 @@ metadata:
     controller: true
     kind: daemonset
     name: draw
-    uid: 0f3ea8fe-50b1-11e9-b6ba-fa163e4f813e
+    uid: 568a649c-50b7-11e9-b6ba-fa163e4f813e
 spec:
   ports:
   - name: default

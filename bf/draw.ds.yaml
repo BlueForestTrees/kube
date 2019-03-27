@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-27T17:21:23Z'
+        cattle.io/timestamp: '2019-03-27T17:39:56Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-draw
@@ -29,6 +29,7 @@ spec:
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -43,7 +44,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 2
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
