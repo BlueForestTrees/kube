@@ -3,7 +3,7 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"bf:ingress-3ca9fad07422b6d96cbaa72ad6e2d2e2","ingressName":"bf:draw","hostname":"draw.blueforest.org","path":"/","allNodes":true}]'
+    field.cattle.io/publicEndpoints: 'null'
   labels:
     cattle.io/creator: norman
     workload.user.cattle.io/workloadselector: daemonSet-bf-draw
