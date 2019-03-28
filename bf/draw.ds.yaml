@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-28T11:15:04Z'
+        cattle.io/timestamp: '2019-03-28T13:02:34Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-draw
@@ -44,7 +44,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 5
+  templateGeneration: 6
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
