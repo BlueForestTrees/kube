@@ -17,13 +17,13 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-28T09:34:08Z'
+        cattle.io/timestamp: '2019-03-28T09:53:13Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-draw
     spec:
       containers:
-      - image: blueforest/draw:1.0.1
+      - image: blueforest/draw:1.0.3
         imagePullPolicy: Always
         name: draw
         resources: {}
@@ -44,7 +44,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 3
+  templateGeneration: 4
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
