@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    field.cattle.io/creatorId: user-5dn6d
+    field.cattle.io/ingressState: '{"ZHJhd2hhbmQvYmYvZHJhd2hhbmQuYmx1ZWZvcmVzdC5vcmcvL2FwaS84MA==":"daemonset:bf:gateway","ZHJhd2hhbmQvYmYvZHJhd2hhbmQuYmx1ZWZvcmVzdC5vcmcvLy84MA==":"daemonset:bf:draw"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-bff4d17b5cd480135511fd99e58b83ae","ingressName":"bf:drawhand","hostname":"drawhand.blueforest.org","path":"/api","allNodes":true},{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-a4a75b7a78c0486724470009e323aa63","ingressName":"bf:drawhand","hostname":"drawhand.blueforest.org","path":"/","allNodes":true}]'
+    kubernetes.io/tls-acme: '"true"'
+  labels:
+    cattle.io/creator: norman
+  name: drawhand
+  namespace: bf
+spec:
+  rules:
+  - host: drawhand.blueforest.org
+    http:
+      paths:
+      - backend:
+          serviceName: ingress-bff4d17b5cd480135511fd99e58b83ae
+          servicePort: 80
+        path: /api
+      - backend:
+          serviceName: ingress-a4a75b7a78c0486724470009e323aa63
+          servicePort: 80
+        path: /
+  tls:
+  - hosts:
+    - drawhand.blueforest.org
+    secretName: yoyo
