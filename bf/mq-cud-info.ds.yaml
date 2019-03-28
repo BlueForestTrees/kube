@@ -5,28 +5,28 @@ metadata:
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-facet
-  name: mq-cud-facet
+    workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-info
+  name: mq-cud-info
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-facet
+      workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-info
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-28T16:17:24Z'
+        cattle.io/timestamp: '2019-03-28T16:18:33Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-facet
+        workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-info
     spec:
       containers:
       - env:
         - name: DB_COLLECTION
-          value: facetCollection
+          value: info
         - name: NAME
-          value: facet
+          value: info
         - name: DB_CONNECTION_STRING
           valueFrom:
             secretKeyRef:
@@ -45,7 +45,7 @@ spec:
             optional: false
         image: blueforest/mq-upsert-delete:1.0.3
         imagePullPolicy: Always
-        name: mq-cud-facet
+        name: mq-cud-info
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -84,7 +84,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 2
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

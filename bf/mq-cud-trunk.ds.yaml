@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-09T10:50:36Z'
+        cattle.io/timestamp: '2019-03-28T16:17:48Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-trunk
@@ -43,12 +43,13 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/mq-upsert-delete:1.0.2
+        image: blueforest/mq-upsert-delete:1.0.3
         imagePullPolicy: Always
         name: mq-cud-trunk
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -83,7 +84,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 16
+  templateGeneration: 17
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
