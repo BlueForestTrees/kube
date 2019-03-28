@@ -1,10 +1,7 @@
 apiVersion: v1
 data:
   fluent-bit.conf: "[SERVICE]\n    Flush 1\n    Daemon Off\n    Log_Level info\n \
-    \   Parsers_File parsers.conf\n\n[INPUT]\n    Name             tail\n    Path\
-    \             /var/log/containers/nginx-ingress*.log\n    Parser     docker\n\
-    \    Tag              kube.bf.ingress.*\n    Refresh_Interval 5\n    Mem_Buf_Limit\
-    \    5MB\n    Skip_Long_Lines  On\n\n[INPUT]\n    Name             tail\n    Path\
+    \   Parsers_File parsers.conf\n\n\n[INPUT]\n    Name             tail\n    Path\
     \             /var/log/containers/gateway*.log\n    Parser           docker\n\
     \    Tag              kube.bf.gateway.*\n    Refresh_Interval 5\n    Mem_Buf_Limit\
     \    5MB\n    Skip_Long_Lines  On\n\n[FILTER]\n    Name                kubernetes\n\
