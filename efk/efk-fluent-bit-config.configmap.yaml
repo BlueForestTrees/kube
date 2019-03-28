@@ -11,8 +11,8 @@ data:
     \    Match               *\n    Merge_Log           On\n    Kube_URL         \
     \   https://kubernetes.default.svc:443\n    Kube_CA_File        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n\
     \    Kube_Token_File     /var/run/secrets/kubernetes.io/serviceaccount/token\n\
-    \n[OUTPUT]\n    Name  es-bf\n    Match kube.bf.*\n    Host  efk-elasticsearch\n\
-    \    Port  9200\n    Logstash_Format On\n    Retry_Limit False\n    Type  flb_type\n\
+    \n[OUTPUT]\n    Name  es\n    Match kube.bf.*\n    Host  efk-elasticsearch\n \
+    \   Port  9200\n    Logstash_Format On\n    Retry_Limit False\n    Type  flb_type\n\
     \    Logstash_Prefix bf"
   parsers.conf: ''
 kind: ConfigMap
