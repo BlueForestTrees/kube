@@ -5,7 +5,7 @@ metadata:
     field.cattle.io/targetWorkloadIds: '["daemonset:bf:gateway"]'
   labels:
     cattle.io/creator: norman
-  name: ingress-bff4d17b5cd480135511fd99e58b83ae
+  name: ingress-bf451107538ad5970aaae58c4af70762
   namespace: bf
   ownerReferences:
   - apiVersion: v1beta1/extensions
@@ -19,6 +19,6 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    workloadID_ingress-bff4d17b5cd480135511fd99e58b83ae: 'true'
+    workloadID_ingress-bf451107538ad5970aaae58c4af70762: 'true'
   sessionAffinity: None
   type: ClusterIP
