@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-31T15:10:34Z'
+        cattle.io/timestamp: '2019-03-31T15:15:52Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-search
@@ -32,7 +32,7 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/mq-search:1.0.0
+        image: blueforest/mq-search:1.0.2
         imagePullPolicy: Always
         name: mq-search
         resources: {}
@@ -87,7 +87,7 @@ spec:
           name: search-sub-jobs
           optional: false
         name: search-sub-jobs
-  templateGeneration: 5
+  templateGeneration: 6
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
