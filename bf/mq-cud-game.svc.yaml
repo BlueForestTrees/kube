@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:mq-cud-game"]'
+    workload.cattle.io/targetWorkloadIdNoop: 'true'
+    workload.cattle.io/workloadPortBased: 'true'
+  labels:
+    cattle.io/creator: norman
+  name: mq-cud-game
+  namespace: bf
+  ownerReferences:
+  - apiVersion: apps/v1beta2
+    controller: true
+    kind: daemonset
+    name: mq-cud-game
+    uid: 50b38bf5-53c5-11e9-b6ba-fa163e4f813e
+spec:
+  ports:
+  - name: default
+    port: 42
+    protocol: TCP
+    targetPort: 42
+  selector:
+    workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-game
+  sessionAffinity: None
+  type: ClusterIP
