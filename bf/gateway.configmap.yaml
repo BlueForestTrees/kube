@@ -46,7 +46,8 @@ data:
     \           access_by_lua_block {\n                local gt = require \"gateway\"\
     \n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n           \
     \ set $film film.bf.svc.cluster.local;\n            proxy_pass http://$film;\n\
-    \        }\n    }\n}"
+    \        }\n\t\tlocation /api/search {\n            set $search search.bf.svc.cluster.local;\n\
+    \            proxy_pass http://$search;\n        }\n    }\n}"
 kind: ConfigMap
 metadata:
   annotations:
