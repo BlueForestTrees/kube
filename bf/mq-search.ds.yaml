@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-28T16:44:58Z'
+        cattle.io/timestamp: '2019-03-31T15:10:34Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-search
@@ -56,6 +56,9 @@ spec:
         - mountPath: /jobs.json
           name: search-jobs
           subPath: jobs.json
+        - mountPath: /subjobs.json
+          name: search-sub-jobs
+          subPath: subjobs.json
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -79,7 +82,12 @@ spec:
           name: search-jobs
           optional: false
         name: search-jobs
-  templateGeneration: 4
+      - configMap:
+          defaultMode: 256
+          name: search-sub-jobs
+          optional: false
+        name: search-sub-jobs
+  templateGeneration: 5
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

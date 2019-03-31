@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  subjobs.json: '["impact","facet","root"]'
+kind: ConfigMap
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+  labels:
+    cattle.io/creator: norman
+  name: search-sub-jobs
+  namespace: bf
