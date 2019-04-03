@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-30T11:49:51Z'
+        cattle.io/timestamp: '2019-04-03T15:44:07Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-film
@@ -38,7 +38,7 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/film:2.0.4
+        image: blueforest/film:2.0.5
         imagePullPolicy: Always
         name: film
         resources: {}
@@ -59,7 +59,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 6
+  templateGeneration: 7
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
