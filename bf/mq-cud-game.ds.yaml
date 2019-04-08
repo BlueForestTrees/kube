@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-31T14:57:33Z'
+        cattle.io/timestamp: '2019-04-08T16:23:28Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-game
@@ -43,7 +43,7 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/mq-upsert-delete:1.0.3
+        image: blueforest/mq-upsert-delete:1.0.4
         imagePullPolicy: Always
         name: mq-cud-game
         resources: {}
@@ -84,7 +84,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 1
+  templateGeneration: 2
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
