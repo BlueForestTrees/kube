@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '17'
+    deployment.kubernetes.io/revision: '18'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -10,7 +10,6 @@ metadata:
   name: off-import
   namespace: imports
 spec:
-  paused: true
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
@@ -25,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-08T09:23:46Z'
+        cattle.io/timestamp: '2019-04-08T15:49:21Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -45,7 +44,7 @@ spec:
             name: mongo
         - configMapRef:
             name: user
-        image: blueforest/off-import:1.1.0
+        image: blueforest/off-import:1.1.1
         imagePullPolicy: Always
         name: off-import
         resources: {}
