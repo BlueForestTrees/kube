@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-08T14:12:04Z'
+        cattle.io/timestamp: '2019-04-08T15:56:22Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-facet
@@ -35,12 +35,13 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/attribut:1.1.7
+        image: blueforest/attribut:1.1.8
         imagePullPolicy: Always
         name: facet
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -65,7 +66,7 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 11
+  templateGeneration: 12
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
