@@ -10,6 +10,7 @@ metadata:
   name: off-import
   namespace: imports
 spec:
+  paused: true
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
@@ -42,20 +43,16 @@ spec:
         envFrom:
         - configMapRef:
             name: 'off'
-            optional: false
         - secretRef:
             name: mongo
-            optional: false
         - configMapRef:
             name: user
-            optional: false
         image: blueforest/off-import:1.1.1
         imagePullPolicy: Always
         name: off-import
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
-          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
