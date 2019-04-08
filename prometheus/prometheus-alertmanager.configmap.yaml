@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  alertmanager.yml: "global: {}\nreceivers:\n- name: default-receiver\nroute:\n  group_interval:\
+    \ 5m\n  group_wait: 10s\n  receiver: default-receiver\n  repeat_interval: 3h\n"
+kind: ConfigMap
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-8.9.2
+    component: alertmanager
+    heritage: Tiller
+    io.cattle.field/appId: prometheus
+    release: prometheus
+  name: prometheus-alertmanager
+  namespace: prometheus
