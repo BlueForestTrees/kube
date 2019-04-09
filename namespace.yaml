@@ -263,7 +263,6 @@ items:
   kind: Namespace
   metadata:
     annotations:
-      cattle.io/appIds: prometheus
       cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-04-08T17:28:47Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-04-08T17:28:47Z"}]}'
       field.cattle.io/creatorId: user-5dn6d
       field.cattle.io/projectId: c-5qdp4:p-g5rmx
