@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2018-12-08T17:28:41Z'
+        cattle.io/timestamp: '2019-04-09T08:52:59Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
@@ -30,7 +30,7 @@ spec:
         - configMapRef:
             name: bf
             optional: false
-        image: blueforest/categorie:1.0.2
+        image: blueforest/categorie:1.0.4
         imagePullPolicy: Always
         name: categorie
         resources: {}
@@ -45,11 +45,13 @@ spec:
         terminationMessagePolicy: File
         tty: true
       dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: hub
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 1
+  templateGeneration: 3
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
