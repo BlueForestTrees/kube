@@ -25,7 +25,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-08T16:14:16Z'
+        cattle.io/timestamp: '2019-04-10T16:17:35Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -40,19 +40,25 @@ spec:
           value: production
         - name: PAGE
           value: '0'
+        - name: PAGE_SIZE
+          value: '1000000'
         envFrom:
         - configMapRef:
             name: 'off'
+            optional: false
         - secretRef:
             name: mongo
+            optional: false
         - configMapRef:
             name: user
-        image: blueforest/off-import:1.1.1
+            optional: false
+        image: blueforest/off-import:1.1.2
         imagePullPolicy: Always
         name: off-import
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
