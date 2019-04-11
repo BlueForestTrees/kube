@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-08T14:11:35Z'
+        cattle.io/timestamp: '2019-04-11T15:34:19Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-tree
@@ -42,6 +42,7 @@ spec:
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -66,7 +67,7 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 28
+  templateGeneration: 29
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
