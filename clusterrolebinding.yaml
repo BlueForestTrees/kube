@@ -134,7 +134,6 @@ items:
       4ab8b795-3b96-11e9-a4f6-0242ac110002: owner-user
       6f8de3e7-fa43-11e8-9073-0242ac110002: owner-user
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
-      9df79bd6-2e0e-11e9-a77e-0242ac110002: owner-user
       cattle.io/creator: norman
       cc47d516-fc7d-11e8-8283-0242ac110002: owner-user
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
@@ -156,7 +155,6 @@ items:
       4ab8b795-3b96-11e9-a4f6-0242ac110002: owner-user
       6f8de3e7-fa43-11e8-9073-0242ac110002: owner-user
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
-      9df79bd6-2e0e-11e9-a77e-0242ac110002: owner-user
       cattle.io/creator: norman
       cc47d516-fc7d-11e8-8283-0242ac110002: owner-user
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
@@ -206,7 +204,6 @@ items:
   metadata:
     generateName: clusterrolebinding-
     labels:
-      9df79bd6-2e0e-11e9-a77e-0242ac110002: owner-user
       cattle.io/creator: norman
     name: clusterrolebinding-fwdzc
   roleRef:
