@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-08T16:09:52Z'
+        cattle.io/timestamp: '2019-04-11T15:45:53Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-impact
@@ -65,7 +65,7 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 13
+  templateGeneration: 14
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
