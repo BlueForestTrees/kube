@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-08T16:23:20Z'
+        cattle.io/timestamp: '2019-04-12T16:51:16Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impact
@@ -43,7 +43,7 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/mq-upsert-delete:1.0.4
+        image: blueforest/mq-upsert-delete:1.0.5
         imagePullPolicy: Always
         name: mq-cud-impact
         resources: {}
@@ -84,7 +84,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 4
+  templateGeneration: 5
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
