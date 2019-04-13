@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '5'
+    deployment.kubernetes.io/revision: '1'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-13T09:15:04Z'
+        cattle.io/timestamp: '2019-04-13T11:28:21Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-import-mongo
@@ -39,11 +39,7 @@ spec:
                 values:
                 - two
       containers:
-      - envFrom:
-        - secretRef:
-            name: mongooff
-            optional: false
-        image: mongo:xenial
+      - image: mongo:xenial
         imagePullPolicy: Always
         name: import-mongo
         resources: {}

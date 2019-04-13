@@ -14,7 +14,7 @@ metadata:
     controller: true
     kind: deployment
     name: import-mongo
-    uid: b49a1844-5dc4-11e9-b6ba-fa163e4f813e
+    uid: 3f819b55-5ddf-11e9-8c04-fa163e4f813e
 spec:
   ports:
   - name: default
