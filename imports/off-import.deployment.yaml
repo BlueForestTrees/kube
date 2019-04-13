@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '22'
+    deployment.kubernetes.io/revision: '23'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-12T16:52:37Z'
+        cattle.io/timestamp: '2019-04-13T08:10:19Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -48,6 +48,11 @@ spec:
           value: production
         - name: PAGE
           value: '0'
+        - name: CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              key: CONNECTION_STRING
+              name: mongooff
         envFrom:
         - configMapRef:
             name: 'off'
