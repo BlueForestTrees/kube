@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '28'
+    deployment.kubernetes.io/revision: '30'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-13T11:47:17Z'
+        cattle.io/timestamp: '2019-04-15T16:28:03Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -46,6 +46,12 @@ spec:
           value: '{}'
         - name: NODE_ENV
           value: production
+        - name: DB_CONNECTION_STRING_OFF
+          valueFrom:
+            configMapKeyRef:
+              key: DB_CONNECTION_STRING_OFF
+              name: 'off'
+              optional: false
         envFrom:
         - configMapRef:
             name: 'off'
@@ -56,7 +62,7 @@ spec:
         - configMapRef:
             name: user
             optional: false
-        image: blueforest/off-import:1.1.3
+        image: blueforest/off-import:1.1.4
         imagePullPolicy: Always
         name: off-import
         resources: {}
