@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2018-12-08T17:32:29Z'
+        cattle.io/timestamp: '2019-04-16T17:25:29Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-grandeur
@@ -26,7 +26,7 @@ spec:
         - configMapRef:
             name: bf
             optional: false
-        image: blueforest/grandeur:1.0.10
+        image: blueforest/grandeur:1.1.0
         imagePullPolicy: Always
         name: grandeur
         resources: {}
@@ -41,11 +41,13 @@ spec:
         terminationMessagePolicy: File
         tty: true
       dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: hub
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 1
+  templateGeneration: 2
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

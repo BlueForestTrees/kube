@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-11T15:46:59Z'
+        cattle.io/timestamp: '2019-04-16T17:26:45Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-tree
@@ -36,12 +36,13 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/tree:1.2.4
+        image: blueforest/tree:1.2.6
         imagePullPolicy: Always
         name: tree
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -66,7 +67,7 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 30
+  templateGeneration: 31
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
