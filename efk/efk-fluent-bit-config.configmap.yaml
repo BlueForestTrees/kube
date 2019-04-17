@@ -2,8 +2,8 @@ apiVersion: v1
 data:
   fluent-bit.conf: "[SERVICE]\n    Flush 5\n    Daemon Off\n    Config_Watch On\n\
     \    Log_Level error\n    Parsers_File parsers.conf\n\n[INPUT]\n    Name cpu\n\
-    \    Tag  kube.sys.cpu\n\t\n[INPUT]\n    Name   mem\n    Tag    kube.sys.mem\n\
-    \t\n[INPUT]\n    Name             tail\n    Path             /var/log/containers/nginx-ingress*.log\n\
+    \    Tag  kube.sys.cpu\n\n[INPUT]\n    Name   mem\n    Tag    kube.sys.mem\n\n\
+    [INPUT]\n    Name             tail\n    Path             /var/log/containers/nginx-ingress*.log\n\
     \    Parser     docker\n    Tag              kube.bf.ingress.*\n    Refresh_Interval\
     \ 5\n    Mem_Buf_Limit    5MB\n    Skip_Long_Lines  On\n\n[INPUT]\n    Name  \
     \           tail\n    Path             /var/log/containers/gateway*.log\n    Parser\
@@ -14,10 +14,12 @@ data:
     \        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    Kube_Token_File\
     \     /var/run/secrets/kubernetes.io/serviceaccount/token\n\n[OUTPUT]\n    Name\
     \  es\n    Match kube.bf.*\n    Host  efk-elasticsearch\n    Port  9200\n    Logstash_Format\
-    \ On\n    Retry_Limit False\n    Type  flb_type\n    Logstash_Prefix bf\n\t\n\
-    [OUTPUT]\n    Name  es\n    Match kube.sys.*\n    Host  efk-elasticsearch\n  \
-    \  Port  9200\n    Logstash_Format On\n    Retry_Limit False\n    Type  flb_type\n\
-    \    Logstash_Prefix sys"
+    \ On\n    Retry_Limit False\n    Type  flb_type\n    Logstash_Prefix bf\n\n[OUTPUT]\n\
+    \    Name  es\n    Match kube.sys.cpu\n    Host  efk-elasticsearch\n    Port \
+    \ 9200\n    Logstash_Format On\n    Retry_Limit False\n    Type  flb_type\n  \
+    \  Logstash_Prefix cpu\n\n[OUTPUT]\n    Name  es\n    Match kube.sys.mem\n   \
+    \ Host  efk-elasticsearch\n    Port  9200\n    Logstash_Format On\n    Retry_Limit\
+    \ False\n    Type  flb_type\n    Logstash_Prefix mem"
   parsers.conf: ''
 kind: ConfigMap
 metadata:
