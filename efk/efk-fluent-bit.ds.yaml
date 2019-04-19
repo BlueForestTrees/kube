@@ -14,14 +14,14 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-17T17:03:40Z'
+        cattle.io/timestamp: '2019-04-19T14:22:47Z'
         checksum/config: 63c1132f100b581835ac5bc4c1a81ea8252b7e5255c233adb15316613a58fb6f
       creationTimestamp: null
       labels:
         app: efk-fluent-bit
     spec:
       containers:
-      - image: fluent/fluent-bit:0.13
+      - image: fluent/fluent-bit:1.0.4
         imagePullPolicy: Always
         name: efk-fluent-bit
         resources:
@@ -30,6 +30,8 @@ spec:
           requests:
             cpu: 100m
             memory: 100Mi
+        securityContext:
+          capabilities: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
@@ -61,7 +63,7 @@ spec:
           defaultMode: 420
           name: efk-fluent-bit-config
         name: config
-  templateGeneration: 77
+  templateGeneration: 78
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
