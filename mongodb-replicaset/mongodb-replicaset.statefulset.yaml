@@ -38,7 +38,7 @@ spec:
         - --keyFile=/data/configdb/key.txt
         command:
         - mongod
-        image: mongo:xenial
+        image: mongo:bionic
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
@@ -148,7 +148,7 @@ spec:
             secretKeyRef:
               key: password
               name: mongodb-replicaset-admin
-        image: mongo:xenial
+        image: mongo:bionic
         imagePullPolicy: IfNotPresent
         name: bootstrap
         resources: {}
