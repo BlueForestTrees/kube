@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '36'
+    deployment.kubernetes.io/revision: '37'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-04T16:38:29Z'
+        cattle.io/timestamp: '2019-05-04T23:50:33Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -47,11 +47,11 @@ spec:
         - name: NODE_ENV
           value: production
         - name: PAGE
-          value: '3'
+          value: '2'
         - name: PAGE_LOG
           value: '200'
         - name: PAGE_SIZE
-          value: '100000'
+          value: '200000'
         - name: DB_CONNECTION_STRING_OFF
           valueFrom:
             configMapKeyRef:
