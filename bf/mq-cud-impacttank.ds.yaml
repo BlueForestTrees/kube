@@ -1,50 +1,51 @@
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '5'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: deployment-imports-adm-import
-  name: adm-import
-  namespace: imports
+    workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impacttank
+  name: mq-cud-impacttank
+  namespace: bf
 spec:
-  progressDeadlineSeconds: 600
-  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: deployment-imports-adm-import
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
-    type: RollingUpdate
+      workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impacttank
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-04T10:25:39Z'
+        cattle.io/timestamp: '2019-05-04T10:23:43Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: deployment-imports-adm-import
+        workload.user.cattle.io/workloadselector: daemonSet-bf-mq-cud-impacttank
     spec:
       containers:
       - env:
-        - name: DEBUG
-          value: api:*
+        - name: DB_COLLECTION
+          value: impactTank
+        - name: NAME
+          value: impactTank
+        - name: DB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              key: DB_CONNECTION_STRING
+              name: mongo
+              optional: false
         - name: NODE_ENV
-          value: production
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: bf
+              optional: false
         envFrom:
-        - secretRef:
-            name: mongo
-            optional: false
         - configMapRef:
-            name: user
+            name: log
             optional: false
-        image: blueforest/adm-import:1.1.2
+        image: blueforest/mq-upsert-delete:1.0.5
         imagePullPolicy: Always
-        name: adm-import
+        name: mq-cud-impacttank
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -59,7 +60,12 @@ spec:
         volumeMounts:
         - mountPath: /mq.json
           name: rabbit
+          readOnly: true
           subPath: mq.json
+        - mountPath: /queue.json
+          name: queue
+          readOnly: true
+          subPath: queue.json
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -73,3 +79,13 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
+      - configMap:
+          defaultMode: 256
+          name: queue
+          optional: false
+        name: queue
+  templateGeneration: 1
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

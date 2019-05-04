@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-18T20:59:44Z'
+        cattle.io/timestamp: '2019-05-04T10:24:32Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-search
@@ -40,12 +40,13 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/search:1.0.11
+        image: blueforest/search:1.1.0
         imagePullPolicy: Always
         name: search
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -60,7 +61,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 12
+  templateGeneration: 13
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
