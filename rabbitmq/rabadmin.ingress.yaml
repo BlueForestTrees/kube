@@ -5,7 +5,7 @@ metadata:
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     field.cattle.io/creatorId: user-5dn6d
     field.cattle.io/ingressState: '{"cmFiYWRtaW4vcmFiYml0bXEvcmFiYml0LmJsdWVmb3Jlc3Qub3JnLy8vMTU2NzI=":""}'
-    field.cattle.io/publicEndpoints: '[{"addresses":["\u003cnil\u003e"],"port":443,"protocol":"HTTPS","serviceName":"rabbitmq:rabbitmq-rabbitmq-ha","ingressName":"rabbitmq:rabadmin","hostname":"rabbit.blueforest.org","path":"/","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"rabbitmq:rabbitmq-rabbitmq-ha","ingressName":"rabbitmq:rabadmin","hostname":"rabbit.blueforest.org","path":"/","allNodes":true}]'
     kubernetes.io/tls-acme: '"true"'
   labels:
     cattle.io/creator: norman
