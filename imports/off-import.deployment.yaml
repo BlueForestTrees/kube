@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '38'
+    deployment.kubernetes.io/revision: '39'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-05T09:33:54Z'
+        cattle.io/timestamp: '2019-05-06T09:29:23Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -45,13 +45,13 @@ spec:
         - name: IMPORT_FILTER
           value: '{}'
         - name: LIMIT
-          value: '100000'
+          value: '0'
         - name: LOG_EVERY
           value: '200'
         - name: NODE_ENV
           value: production
         - name: SKIP
-          value: '350000'
+          value: '0'
         - name: DB_CONNECTION_STRING_OFF
           valueFrom:
             configMapKeyRef:
