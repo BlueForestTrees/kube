@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '45'
+    deployment.kubernetes.io/revision: '46'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-07T10:05:03Z'
+        cattle.io/timestamp: '2019-05-07T10:47:20Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -44,14 +44,12 @@ spec:
           value: api:*
         - name: IMPORT_FILTER
           value: '{}'
-        - name: LIMIT
-          value: '0'
         - name: LOG_EVERY
-          value: '200'
+          value: '5000'
         - name: NODE_ENV
           value: production
-        - name: SKIP
-          value: '0'
+        - name: PRODUCT_PATH
+          value: /dump/off/products.bson
         - name: DB_CONNECTION_STRING_OFF
           valueFrom:
             configMapKeyRef:
@@ -68,7 +66,7 @@ spec:
         - configMapRef:
             name: user
             optional: false
-        image: blueforest/off-import:1.2.0
+        image: blueforest/off-import:1.2.1
         imagePullPolicy: Always
         name: off-import
         resources: {}
