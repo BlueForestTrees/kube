@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '46'
+    deployment.kubernetes.io/revision: '47'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-07T10:47:20Z'
+        cattle.io/timestamp: '2019-05-07T10:47:20.000Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -69,7 +69,9 @@ spec:
         image: blueforest/off-import:1.2.1
         imagePullPolicy: Always
         name: off-import
-        resources: {}
+        resources:
+          limits:
+            cpu: '1'
         securityContext:
           allowPrivilegeEscalation: false
           capabilities: {}
