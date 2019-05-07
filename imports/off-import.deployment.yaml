@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '48'
+    deployment.kubernetes.io/revision: '49'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-07T13:11:53Z'
+        cattle.io/timestamp: '2019-05-07T14:09:14Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-imports-off-import
@@ -71,7 +71,7 @@ spec:
         name: off-import
         resources:
           limits:
-            cpu: 500m
+            cpu: '1'
         securityContext:
           allowPrivilegeEscalation: false
           capabilities: {}
