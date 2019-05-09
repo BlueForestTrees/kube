@@ -886,6 +886,7 @@ items:
     resourceNames:
     - efk
     - prometheus
+    - grafana
     resources:
     - namespaces
     verbs:
@@ -904,6 +905,7 @@ items:
     resourceNames:
     - efk
     - prometheus
+    - grafana
     resources:
     - namespaces
     verbs:
@@ -1149,6 +1151,25 @@ items:
     - /metrics
     verbs:
     - get
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    labels:
+      app: grafana
+      chart: grafana-0.0.31
+      heritage: Tiller
+      io.cattle.field/appId: grafana
+      release: grafana
+    name: psp-grafana-grafana
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - grafana-grafana
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:
