@@ -778,7 +778,6 @@ items:
     - cert-manager
     - imports
     - rabbitmq-ha
-    - prometheus
     resources:
     - namespaces
     verbs:
@@ -801,7 +800,6 @@ items:
     - cert-manager
     - imports
     - rabbitmq-ha
-    - prometheus
     resources:
     - namespaces
     verbs:
@@ -887,6 +885,7 @@ items:
     - ''
     resourceNames:
     - efk
+    - prometheus
     resources:
     - namespaces
     verbs:
@@ -904,6 +903,7 @@ items:
     - ''
     resourceNames:
     - efk
+    - prometheus
     resources:
     - namespaces
     verbs:
@@ -1030,6 +1030,125 @@ items:
     - get
     - list
     - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    labels:
+      app: prometheus
+      chart: prometheus-8.11.0
+      component: kube-state-metrics
+      heritage: Tiller
+      io.cattle.field/appId: prometheus
+      release: prometheus
+    name: prometheus-kube-state-metrics
+  rules:
+  - apiGroups:
+    - ''
+    resources:
+    - namespaces
+    - nodes
+    - persistentvolumeclaims
+    - pods
+    - services
+    - resourcequotas
+    - replicationcontrollers
+    - limitranges
+    - persistentvolumeclaims
+    - persistentvolumes
+    - endpoints
+    - secrets
+    - configmaps
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - daemonsets
+    - deployments
+    - ingresses
+    - replicasets
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - apps
+    resources:
+    - daemonsets
+    - deployments
+    - statefulsets
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - batch
+    resources:
+    - cronjobs
+    - jobs
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - autoscaling
+    resources:
+    - horizontalpodautoscalers
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - policy
+    resources:
+    - poddisruptionbudgets
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - certificates.k8s.io
+    resources:
+    - certificatesigningrequests
+    verbs:
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    labels:
+      app: prometheus
+      chart: prometheus-8.11.0
+      component: server
+      heritage: Tiller
+      io.cattle.field/appId: prometheus
+      release: prometheus
+    name: prometheus-server
+  rules:
+  - apiGroups:
+    - ''
+    resources:
+    - nodes
+    - nodes/proxy
+    - services
+    - endpoints
+    - pods
+    - ingresses
+    - configmaps
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses/status
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - nonResourceURLs:
+    - /metrics
+    verbs:
+    - get
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:

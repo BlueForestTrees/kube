@@ -494,6 +494,44 @@ items:
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
+    labels:
+      app: prometheus
+      chart: prometheus-8.11.0
+      component: kube-state-metrics
+      heritage: Tiller
+      io.cattle.field/appId: prometheus
+      release: prometheus
+    name: prometheus-kube-state-metrics
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: prometheus-kube-state-metrics
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-kube-state-metrics
+    namespace: prometheus
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    labels:
+      app: prometheus
+      chart: prometheus-8.11.0
+      component: server
+      heritage: Tiller
+      io.cattle.field/appId: prometheus
+      release: prometheus
+    name: prometheus-server
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: prometheus-server
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-server
+    namespace: prometheus
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
     annotations:
       rbac.authorization.kubernetes.io/autoupdate: 'true'
     labels:

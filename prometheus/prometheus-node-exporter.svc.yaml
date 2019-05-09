@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: 'true'
+  labels:
+    app: prometheus
+    chart: prometheus-8.11.0
+    component: node-exporter
+    heritage: Tiller
+    io.cattle.field/appId: prometheus
+    release: prometheus
+  name: prometheus-node-exporter
+  namespace: prometheus
+spec:
+  ports:
+  - name: metrics
+    port: 9100
+    protocol: TCP
+    targetPort: 9100
+  selector:
+    app: prometheus
+    component: node-exporter
+    release: prometheus
+  sessionAffinity: None
+  type: ClusterIP
