@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":31922,"protocol":"TCP","serviceName":"efk:efk-elasticsearch","allNodes":true},{"addresses":["51.77.136.161"],"port":32214,"protocol":"TCP","serviceName":"efk:efk-elasticsearch","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.137.98"],"port":31922,"protocol":"TCP","serviceName":"efk:efk-elasticsearch","allNodes":true},{"addresses":["51.77.137.98"],"port":32214,"protocol":"TCP","serviceName":"efk:efk-elasticsearch","allNodes":true}]'
   labels:
     app: elasticsearch
     chart: elasticsearch-0.1.0
