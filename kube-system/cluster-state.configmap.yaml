@@ -1,12 +1,12 @@
 apiVersion: v1
 data:
-  cluster-state: "nodes:\n- nodeName: c-5qdp4:m-35d6d33467aa\n  address: 51.77.137.108\n\
-    \  port: \"22\"\n  internal_address: 51.77.137.108\n  role:\n  - etcd\n  - controlplane\n\
-    \  - worker\n  hostname_override: three\n  user: root\n  docker_socket: \"\"\n\
-    \  ssh_key: \"\"\n  ssh_key_path: ~/.ssh/id_rsa\n  labels: {}\n- nodeName: c-5qdp4:m-b8a9f715dbb6\n\
-    \  address: 51.77.137.98\n  port: \"22\"\n  internal_address: 51.77.137.98\n \
-    \ role:\n  - etcd\n  - controlplane\n  - worker\n  hostname_override: two\n  user:\
-    \ root\n  docker_socket: \"\"\n  ssh_key: \"\"\n  ssh_key_path: ~/.ssh/id_rsa\n\
+  cluster-state: "nodes:\n- nodeName: c-5qdp4:m-b8a9f715dbb6\n  address: 51.77.137.98\n\
+    \  port: \"22\"\n  internal_address: 51.77.137.98\n  role:\n  - etcd\n  - controlplane\n\
+    \  - worker\n  hostname_override: two\n  user: root\n  docker_socket: \"\"\n \
+    \ ssh_key: \"\"\n  ssh_key_path: ~/.ssh/id_rsa\n  labels: {}\n- nodeName: c-5qdp4:m-f5d75f31e94f\n\
+    \  address: 51.77.137.108\n  port: \"22\"\n  internal_address: 51.77.137.108\n\
+    \  role:\n  - etcd\n  - controlplane\n  - worker\n  hostname_override: vps617763\n\
+    \  user: root\n  docker_socket: \"\"\n  ssh_key: \"\"\n  ssh_key_path: ~/.ssh/id_rsa\n\
     \  labels: {}\n- nodeName: c-5qdp4:m-f97c5d29941b\n  address: 51.77.136.161\n\
     \  port: \"22\"\n  internal_address: 51.77.136.161\n  role:\n  - etcd\n  - controlplane\n\
     \  - worker\n  hostname_override: one\n  user: root\n  docker_socket: \"\"\n \
