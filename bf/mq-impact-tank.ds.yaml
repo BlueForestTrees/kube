@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-09T15:19:26Z'
+        cattle.io/timestamp: '2019-05-09T15:26:20Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-impact-tank
@@ -45,7 +45,6 @@ spec:
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
-          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -80,7 +79,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 4
+  templateGeneration: 6
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
