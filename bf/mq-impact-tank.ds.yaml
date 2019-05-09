@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-09T14:57:25Z'
+        cattle.io/timestamp: '2019-05-09T15:19:26Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-impact-tank
@@ -39,12 +39,13 @@ spec:
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/mq-impact-tank:1.0.0
+        image: blueforest/mq-impact-tank:1.0.1
         imagePullPolicy: Always
         name: mq-impact-tank
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -79,7 +80,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 3
+  templateGeneration: 4
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
