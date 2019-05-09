@@ -2141,15 +2141,15 @@ data:
     \ \"prometheus\",\n            \"type\": \"datasource\",\n            \"value\"\
     : \"prometheus\"\n        }\n    ],\n    \"overwrite\": true\n}"
   prometheus-datasource.json: "{\n  \"access\": \"proxy\",\n  \"basicAuth\": false,\n\
-    \  \"name\": \"prometheus\",\n  \"type\": \"prometheus\",\n  \"url\": \"http://grafana-server:80\"\
+    \  \"name\": \"prometheus\",\n  \"type\": \"prometheus\",\n  \"url\": \"http://prometheus-server:80\"\
     \n}\n"
 kind: ConfigMap
 metadata:
   labels:
-    app: grafana
+    app: prometheus-grafana
     chart: grafana-0.0.31
     heritage: Tiller
-    io.cattle.field/appId: grafana
-    release: grafana
-  name: grafana-grafana
-  namespace: grafana
+    io.cattle.field/appId: prometheus
+    release: prometheus
+  name: prometheus-grafana
+  namespace: prometheus

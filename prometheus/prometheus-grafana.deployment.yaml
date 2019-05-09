@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: '1'
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":31431,"protocol":"TCP","serviceName":"grafana:grafana-grafana","allNodes":true},{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"grafana:grafana-grafana","ingressName":"grafana:grafana","hostname":"grafana.grafana.51.77.136.161.xip.io","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":30321,"protocol":"TCP","serviceName":"prometheus:prometheus-grafana","allNodes":true},{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"prometheus:prometheus-grafana","ingressName":"prometheus:prometheus-grafana","hostname":"prometheus-grafana.prometheus.51.77.136.161.xip.io","allNodes":true}]'
   labels:
-    app: grafana
+    app: prometheus-grafana
     chart: grafana-0.0.31
     heritage: Tiller
-    io.cattle.field/appId: grafana
-    release: grafana
-  name: grafana-grafana
-  namespace: grafana
+    io.cattle.field/appId: prometheus
+    release: prometheus
+  name: prometheus-grafana
+  namespace: prometheus
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: grafana
-      release: grafana
+      app: prometheus-grafana
+      release: prometheus
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -29,8 +29,8 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: grafana
-        release: grafana
+        app: prometheus-grafana
+        release: prometheus
     spec:
       containers:
       - env:
@@ -42,12 +42,12 @@ spec:
           valueFrom:
             secretKeyRef:
               key: user
-              name: grafana-grafana
+              name: prometheus-grafana
         - name: GF_SECURITY_ADMIN_PASSWORD
           valueFrom:
             secretKeyRef:
               key: password
-              name: grafana-grafana
+              name: prometheus-grafana
         image: grafana/grafana:5.0.0
         imagePullPolicy: IfNotPresent
         name: grafana
@@ -86,12 +86,12 @@ spec:
           valueFrom:
             secretKeyRef:
               key: user
-              name: grafana-grafana
+              name: prometheus-grafana
         - name: GRAFANA_PASSWORD
           valueFrom:
             secretKeyRef:
               key: password
-              name: grafana-grafana
+              name: prometheus-grafana
         image: quay.io/coreos/grafana-watcher:v0.0.8
         imagePullPolicy: IfNotPresent
         name: grafana-watcher
@@ -113,17 +113,17 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
-      serviceAccount: grafana-grafana
-      serviceAccountName: grafana-grafana
+      serviceAccount: prometheus-grafana
+      serviceAccountName: prometheus-grafana
       terminationGracePeriodSeconds: 30
       volumes:
       - emptyDir: {}
         name: grafana-storage
       - configMap:
           defaultMode: 420
-          name: grafana-grafana
+          name: prometheus-grafana
         name: grafana-dashboards-k8s
       - configMap:
           defaultMode: 420
-          name: grafana-grafana-resources
+          name: prometheus-grafana-resources
         name: grafana-dashboards-resources

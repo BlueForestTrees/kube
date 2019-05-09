@@ -3,8 +3,7 @@ data:
   alerts: '{}
 
     '
-  prometheus.yml: "global:\n  evaluation_interval: 1m\n  scrape_interval: 1m\n  scrape_timeout:\
-    \ 10s\nrule_files:\n- /etc/config/rules\n- /etc/config/alerts\nscrape_configs:\n\
+  prometheus.yml: "rule_files:\n- /etc/config/rules\n- /etc/config/alerts\nscrape_configs:\n\
     - job_name: prometheus\n  static_configs:\n  - targets:\n    - localhost:9090\n\
     - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n  job_name:\
     \ kubernetes-apiservers\n  kubernetes_sd_configs:\n  - role: endpoints\n  relabel_configs:\n\
@@ -16,15 +15,15 @@ data:
     \  job_name: kubernetes-nodes\n  kubernetes_sd_configs:\n  - role: node\n  relabel_configs:\n\
     \  - action: labelmap\n    regex: __meta_kubernetes_node_label_(.+)\n  - replacement:\
     \ kubernetes.default.svc:443\n    target_label: __address__\n  - regex: (.+)\n\
-    \    replacement: /api/v1/nodes/$1/proxy/metrics\n    source_labels:\n    - __meta_kubernetes_node_name\n\
-    \    target_label: __metrics_path__\n  scheme: https\n  tls_config:\n    ca_file:\
-    \ /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    insecure_skip_verify:\
-    \ true\n- bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n\
+    \    replacement: /api/v1/nodes/${1}/proxy/metrics\n    source_labels:\n    -\
+    \ __meta_kubernetes_node_name\n    target_label: __metrics_path__\n  scheme: https\n\
+    \  tls_config:\n    ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n\
+    \    insecure_skip_verify: true\n- bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n\
     \  job_name: kubernetes-nodes-cadvisor\n  kubernetes_sd_configs:\n  - role: node\n\
     \  relabel_configs:\n  - action: labelmap\n    regex: __meta_kubernetes_node_label_(.+)\n\
     \  - replacement: kubernetes.default.svc:443\n    target_label: __address__\n\
-    \  - regex: (.+)\n    replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor\n \
-    \   source_labels:\n    - __meta_kubernetes_node_name\n    target_label: __metrics_path__\n\
+    \  - regex: (.+)\n    replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor\n\
+    \    source_labels:\n    - __meta_kubernetes_node_name\n    target_label: __metrics_path__\n\
     \  scheme: https\n  tls_config:\n    ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n\
     \    insecure_skip_verify: true\n- job_name: kubernetes-service-endpoints\n  kubernetes_sd_configs:\n\
     \  - role: endpoints\n  relabel_configs:\n  - action: keep\n    regex: true\n\
@@ -37,14 +36,13 @@ data:
     \    target_label: __address__\n  - action: labelmap\n    regex: __meta_kubernetes_service_label_(.+)\n\
     \  - action: replace\n    source_labels:\n    - __meta_kubernetes_namespace\n\
     \    target_label: kubernetes_namespace\n  - action: replace\n    source_labels:\n\
-    \    - __meta_kubernetes_service_name\n    target_label: kubernetes_name\n  -\
-    \ action: replace\n    source_labels:\n    - __meta_kubernetes_pod_node_name\n\
-    \    target_label: kubernetes_node\n- honor_labels: true\n  job_name: prometheus-pushgateway\n\
-    \  kubernetes_sd_configs:\n  - role: service\n  relabel_configs:\n  - action:\
-    \ keep\n    regex: pushgateway\n    source_labels:\n    - __meta_kubernetes_service_annotation_prometheus_io_probe\n\
-    - job_name: kubernetes-services\n  kubernetes_sd_configs:\n  - role: service\n\
-    \  metrics_path: /probe\n  params:\n    module:\n    - http_2xx\n  relabel_configs:\n\
-    \  - action: keep\n    regex: true\n    source_labels:\n    - __meta_kubernetes_service_annotation_prometheus_io_probe\n\
+    \    - __meta_kubernetes_service_name\n    target_label: kubernetes_name\n- honor_labels:\
+    \ true\n  job_name: prometheus-pushgateway\n  kubernetes_sd_configs:\n  - role:\
+    \ service\n  relabel_configs:\n  - action: keep\n    regex: pushgateway\n    source_labels:\n\
+    \    - __meta_kubernetes_service_annotation_prometheus_io_probe\n- job_name: kubernetes-services\n\
+    \  kubernetes_sd_configs:\n  - role: service\n  metrics_path: /probe\n  params:\n\
+    \    module:\n    - http_2xx\n  relabel_configs:\n  - action: keep\n    regex:\
+    \ true\n    source_labels:\n    - __meta_kubernetes_service_annotation_prometheus_io_probe\n\
     \  - source_labels:\n    - __address__\n    target_label: __param_target\n  -\
     \ replacement: blackbox\n    target_label: __address__\n  - source_labels:\n \
     \   - __param_target\n    target_label: instance\n  - action: labelmap\n    regex:\
@@ -75,7 +73,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: prometheus
-    chart: prometheus-8.11.0
+    chart: prometheus-6.2.1
     component: server
     heritage: Tiller
     io.cattle.field/appId: prometheus

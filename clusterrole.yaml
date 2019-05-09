@@ -886,7 +886,6 @@ items:
     resourceNames:
     - efk
     - prometheus
-    - grafana
     resources:
     - namespaces
     verbs:
@@ -905,7 +904,6 @@ items:
     resourceNames:
     - efk
     - prometheus
-    - grafana
     resources:
     - namespaces
     verbs:
@@ -1037,7 +1035,7 @@ items:
   metadata:
     labels:
       app: prometheus
-      chart: prometheus-8.11.0
+      chart: prometheus-6.2.1
       component: kube-state-metrics
       heritage: Tiller
       io.cattle.field/appId: prometheus
@@ -1068,7 +1066,6 @@ items:
     resources:
     - daemonsets
     - deployments
-    - ingresses
     - replicasets
     verbs:
     - list
@@ -1076,8 +1073,6 @@ items:
   - apiGroups:
     - apps
     resources:
-    - daemonsets
-    - deployments
     - statefulsets
     verbs:
     - get
@@ -1098,26 +1093,12 @@ items:
     verbs:
     - list
     - watch
-  - apiGroups:
-    - policy
-    resources:
-    - poddisruptionbudgets
-    verbs:
-    - list
-    - watch
-  - apiGroups:
-    - certificates.k8s.io
-    resources:
-    - certificatesigningrequests
-    verbs:
-    - list
-    - watch
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:
     labels:
       app: prometheus
-      chart: prometheus-8.11.0
+      chart: prometheus-6.2.1
       component: server
       heritage: Tiller
       io.cattle.field/appId: prometheus
@@ -1133,11 +1114,16 @@ items:
     - endpoints
     - pods
     - ingresses
-    - configmaps
     verbs:
     - get
     - list
     - watch
+  - apiGroups:
+    - ''
+    resources:
+    - configmaps
+    verbs:
+    - get
   - apiGroups:
     - extensions
     resources:
@@ -1155,17 +1141,17 @@ items:
   kind: ClusterRole
   metadata:
     labels:
-      app: grafana
+      app: prometheus-grafana
       chart: grafana-0.0.31
       heritage: Tiller
-      io.cattle.field/appId: grafana
-      release: grafana
-    name: psp-grafana-grafana
+      io.cattle.field/appId: prometheus
+      release: prometheus
+    name: psp-prometheus-grafana
   rules:
   - apiGroups:
     - extensions
     resourceNames:
-    - grafana-grafana
+    - prometheus-grafana
     resources:
     - podsecuritypolicies
     verbs:

@@ -2,10 +2,10 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   annotations:
-    field.cattle.io/publicEndpoints: '[{"nodeName":"c-5qdp4:m-f5d75f31e94f","addresses":["51.77.137.108"],"port":9100,"protocol":"TCP","podName":"prometheus:prometheus-node-exporter-jqmcz","allNodes":false},{"nodeName":"c-5qdp4:m-f97c5d29941b","addresses":["51.77.136.161"],"port":9100,"protocol":"TCP","podName":"prometheus:prometheus-node-exporter-g9jgr","allNodes":false},{"nodeName":"c-5qdp4:m-b8a9f715dbb6","addresses":["51.77.137.98"],"port":9100,"protocol":"TCP","podName":"prometheus:prometheus-node-exporter-njwd2","allNodes":false}]'
+    field.cattle.io/publicEndpoints: '[{"nodeName":"c-5qdp4:m-f97c5d29941b","addresses":["51.77.136.161"],"port":9100,"protocol":"TCP","podName":"prometheus:prometheus-node-exporter-ttqmt","allNodes":false},{"nodeName":"c-5qdp4:m-f5d75f31e94f","addresses":["51.77.137.108"],"port":9100,"protocol":"TCP","podName":"prometheus:prometheus-node-exporter-rsbfd","allNodes":false},{"nodeName":"c-5qdp4:m-b8a9f715dbb6","addresses":["51.77.137.98"],"port":9100,"protocol":"TCP","podName":"prometheus:prometheus-node-exporter-8htz8","allNodes":false}]'
   labels:
     app: prometheus
-    chart: prometheus-8.11.0
+    chart: prometheus-6.2.1
     component: node-exporter
     heritage: Tiller
     io.cattle.field/appId: prometheus
@@ -24,16 +24,14 @@ spec:
       creationTimestamp: null
       labels:
         app: prometheus
-        chart: prometheus-8.11.0
         component: node-exporter
-        heritage: Tiller
         release: prometheus
     spec:
       containers:
       - args:
         - --path.procfs=/host/proc
         - --path.sysfs=/host/sys
-        image: prom/node-exporter:v0.17.0
+        image: prom/node-exporter:v0.15.2
         imagePullPolicy: IfNotPresent
         name: prometheus-node-exporter
         ports:
@@ -71,6 +69,4 @@ spec:
         name: sys
   templateGeneration: 1
   updateStrategy:
-    rollingUpdate:
-      maxUnavailable: 1
-    type: RollingUpdate
+    type: OnDelete

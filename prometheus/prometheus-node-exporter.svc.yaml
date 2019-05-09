@@ -5,7 +5,7 @@ metadata:
     prometheus.io/scrape: 'true'
   labels:
     app: prometheus
-    chart: prometheus-8.11.0
+    chart: prometheus-6.2.1
     component: node-exporter
     heritage: Tiller
     io.cattle.field/appId: prometheus

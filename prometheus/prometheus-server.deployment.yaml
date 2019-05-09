@@ -2,10 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '2'
+    deployment.kubernetes.io/revision: '1'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":30828,"protocol":"TCP","serviceName":"prometheus:prometheus-server","allNodes":true},{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"prometheus:prometheus-server","ingressName":"prometheus:prometheus-server","hostname":"prometheus-server.prometheus.51.77.136.161.xip.io","allNodes":true}]'
   labels:
     app: prometheus
-    chart: prometheus-8.11.0
+    chart: prometheus-6.2.1
     component: server
     heritage: Tiller
     io.cattle.field/appId: prometheus
@@ -15,7 +16,7 @@ metadata:
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: prometheus
@@ -23,24 +24,22 @@ spec:
       release: prometheus
   strategy:
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
     type: RollingUpdate
   template:
     metadata:
       creationTimestamp: null
       labels:
         app: prometheus
-        chart: prometheus-8.11.0
         component: server
-        heritage: Tiller
         release: prometheus
     spec:
       containers:
       - args:
         - --volume-dir=/etc/config
-        - --webhook-url=http://127.0.0.1:9090/-/reload
-        image: jimmidyson/configmap-reload:v0.2.2
+        - --webhook-url=http://localhost:9090/-/reload
+        image: jimmidyson/configmap-reload:v0.1
         imagePullPolicy: IfNotPresent
         name: prometheus-server-configmap-reload
         resources: {}
@@ -56,7 +55,7 @@ spec:
         - --web.console.libraries=/etc/prometheus/console_libraries
         - --web.console.templates=/etc/prometheus/consoles
         - --web.enable-lifecycle
-        image: prom/prometheus:v2.9.2
+        image: prom/prometheus:v2.2.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3

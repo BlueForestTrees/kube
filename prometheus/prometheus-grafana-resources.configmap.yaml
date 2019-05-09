@@ -1526,10 +1526,10 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app: grafana
+    app: prometheus-grafana
     chart: grafana-0.0.31
     heritage: Tiller
-    io.cattle.field/appId: grafana
-    release: grafana
-  name: grafana-grafana-resources
-  namespace: grafana
+    io.cattle.field/appId: prometheus
+    release: prometheus
+  name: prometheus-grafana-resources
+  namespace: prometheus

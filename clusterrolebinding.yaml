@@ -496,7 +496,7 @@ items:
   metadata:
     labels:
       app: prometheus
-      chart: prometheus-8.11.0
+      chart: prometheus-6.2.1
       component: kube-state-metrics
       heritage: Tiller
       io.cattle.field/appId: prometheus
@@ -515,7 +515,7 @@ items:
   metadata:
     labels:
       app: prometheus
-      chart: prometheus-8.11.0
+      chart: prometheus-6.2.1
       component: server
       heritage: Tiller
       io.cattle.field/appId: prometheus
@@ -533,20 +533,20 @@ items:
   kind: ClusterRoleBinding
   metadata:
     labels:
-      app: grafana
+      app: prometheus-grafana
       chart: grafana-0.0.31
       heritage: Tiller
-      io.cattle.field/appId: grafana
-      release: grafana
-    name: psp-grafana-grafana
+      io.cattle.field/appId: prometheus
+      release: prometheus
+    name: psp-prometheus-grafana
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
-    name: psp-grafana-grafana
+    name: psp-prometheus-grafana
   subjects:
   - kind: ServiceAccount
-    name: grafana-grafana
-    namespace: grafana
+    name: prometheus-grafana
+    namespace: prometheus
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
