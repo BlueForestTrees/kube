@@ -886,6 +886,7 @@ items:
     resourceNames:
     - efk
     - prometheus
+    - grafana
     resources:
     - namespaces
     verbs:
@@ -904,6 +905,7 @@ items:
     resourceNames:
     - efk
     - prometheus
+    - grafana
     resources:
     - namespaces
     verbs:
