@@ -1,6 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
+  annotations: {}
   labels:
     app: kube-backup
   name: kube-state-backup
