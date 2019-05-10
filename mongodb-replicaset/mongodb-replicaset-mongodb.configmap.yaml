@@ -1,8 +1,7 @@
 apiVersion: v1
 data:
-  mongod.conf: 'spomkdgf
-
-    '
+  mongod.conf: "storage:\n  wiredTiger:\n    engineConfig:\n      cacheSizeGB: \"\
+    1.5\"\n"
 kind: ConfigMap
 metadata:
   labels:
