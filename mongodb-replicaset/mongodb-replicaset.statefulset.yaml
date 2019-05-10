@@ -21,7 +21,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: a1f330a77c75ad9460d1a183104d0604a7f0cc5ddc51d0fb83b542023320001c
+        checksum/config: 2757574468122f79d325f603936bd0e079f0c0a039d4973dea011bd0a3804831
       creationTimestamp: null
       labels:
         app: mongodb-replicaset
