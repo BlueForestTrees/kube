@@ -14,7 +14,7 @@ metadata:
     controller: true
     kind: daemonset
     name: mq-cud-impacttank
-    uid: b1c3f6b3-6e56-11e9-8c04-fa163e4f813e
+    uid: 232d3045-7304-11e9-9fe8-eeeeeeeeeeee
 spec:
   ports:
   - name: default

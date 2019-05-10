@@ -5,7 +5,7 @@ metadata:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: 'true'
   labels:
     app: mongodb-replicaset
-    chart: mongodb-replicaset-3.9.2
+    chart: mongodb-replicaset-3.9.3
     heritage: Tiller
     io.cattle.field/appId: mongodb-replicaset
     release: mongodb-replicaset
