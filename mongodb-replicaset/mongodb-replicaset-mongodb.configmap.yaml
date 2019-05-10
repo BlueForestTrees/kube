@@ -1,8 +1,7 @@
 apiVersion: v1
 data:
-  mongod.conf: 'storage:{wiredTiger:{engineConfig:{cacheSizeGB:1.5}}}
-
-    '
+  mongod.conf: "storage:\n  wiredTiger:\n    engineConfig:\n      cacheSizeGB: \"\
+    1.5\""
 kind: ConfigMap
 metadata:
   labels:
