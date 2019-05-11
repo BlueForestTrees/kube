@@ -95,7 +95,8 @@ items:
   kind: Namespace
   metadata:
     annotations:
-      cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2018-12-10T13:16:53Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2018-12-10T13:16:52Z"}]}'
+      cattle.io/appIds: efk
+      cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-05-11T20:47:02Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-05-11T20:47:01Z"}]}'
       field.cattle.io/creatorId: user-5dn6d
       field.cattle.io/projectId: c-5qdp4:p-nnc9n
       lifecycle.cattle.io/create.namespace-auth: 'true'
