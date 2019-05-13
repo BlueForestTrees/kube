@@ -2,19 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:impact"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-message"]'
     workload.cattle.io/targetWorkloadIdNoop: 'true'
     workload.cattle.io/workloadPortBased: 'true'
   labels:
     cattle.io/creator: norman
-  name: impact
+  name: bf-message
   namespace: bf
   ownerReferences:
   - apiVersion: apps/v1beta2
     controller: true
     kind: daemonset
-    name: impact
-    uid: 5b50ad61-fb10-11e8-8468-fa163e4f813e
+    name: bf-message
+    uid: 2bf4376d-7558-11e9-9fe8-eeeeeeeeeeee
 spec:
   ports:
   - name: default
@@ -22,6 +22,6 @@ spec:
     protocol: TCP
     targetPort: 42
   selector:
-    workload.user.cattle.io/workloadselector: daemonSet-bf-impact
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-message
   sessionAffinity: None
   type: ClusterIP

@@ -11,42 +11,42 @@ data:
     \ sendfile        on;\n    keepalive_timeout  65;\n    gzip  on;\n    \n    resolver\
     \ 10.43.0.10 valid=10s;\n\n    server {\n\t\taccess_log logs/access.log json;\n\
     \        listen 80;\n        listen [::]:80;\n        root /var/www;\n       \
-    \ index index.html;\n        location /api/user {\n            set $user user.bf.svc.cluster.local;\n\
+    \ index index.html;\n        location /api/user {\n            set $user bf-user.bf.svc.cluster.local;\n\
     \            proxy_pass http://$user;\n        }\n        location /api/categorie\
     \ {\n            access_by_lua_block {\n                local gt = require \"\
     gateway\"\n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n  \
-    \          set $categorie categorie.bf.svc.cluster.local;\n            proxy_pass\
+    \          set $categorie bf-categorie.bf.svc.cluster.local;\n            proxy_pass\
     \ http://$categorie;\n        }\n        location /api/grandeur {\n          \
-    \  set $grandeur grandeur.bf.svc.cluster.local;\n            proxy_pass http://$grandeur;\n\
+    \  set $grandeur bf-grandeur.bf.svc.cluster.local;\n            proxy_pass http://$grandeur;\n\
     \        }\n        location /api/tree {\n            access_by_lua_block {\n\
     \                local gt = require \"gateway\"\n                gt:verifyToken({\"\
-    ^P\",\"^D\"})\n            }\n            set $tree tree.bf.svc.cluster.local;\n\
+    ^P\",\"^D\"})\n            }\n            set $tree bf-tree.bf.svc.cluster.local;\n\
     \            proxy_pass http://$tree;\n        }\n        location /api/facet\
     \ {\n            access_by_lua_block {\n                local gt = require \"\
     gateway\"\n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n  \
-    \          set $facet facet.bf.svc.cluster.local;\n            proxy_pass http://$facet;\n\
+    \          set $facet bf-facet.bf.svc.cluster.local;\n            proxy_pass http://$facet;\n\
     \        }\n        location /api/message {\n            access_by_lua_block {\n\
     \                local gt = require \"gateway\"\n                gt:verifyToken({\"\
-    ^P\",\"^D\"})\n            }\n            set $message message.bf.svc.cluster.local;\n\
+    ^P\",\"^D\"})\n            }\n            set $message bf-message.bf.svc.cluster.local;\n\
     \            proxy_pass http://$message;\n        }\n        location /api/impact\
     \ {\n            access_by_lua_block {\n                local gt = require \"\
     gateway\"\n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n  \
-    \          set $impact impact.bf.svc.cluster.local;\n            proxy_pass http://$impact;\n\
-    \        }\n        location /api/selection {\n            access_by_lua_block\
+    \          set $impact bf-impact.bf.svc.cluster.local;\n            proxy_pass\
+    \ http://$impact;\n        }\n        location /api/selection {\n            access_by_lua_block\
     \ {\n                local gt = require \"gateway\"\n                gt:verifyToken({\"\
-    ^P\",\"^D\"})\n            }\n            set $selection selection.bf.svc.cluster.local;\n\
+    ^P\",\"^D\"})\n            }\n            set $selection bf-selection.bf.svc.cluster.local;\n\
     \            proxy_pass http://$selection;\n        }\n        location /api/info\
     \ {\n            access_by_lua_block {\n                local gt = require \"\
     gateway\"\n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n  \
-    \          set $info info.bf.svc.cluster.local;\n            proxy_pass http://$info;\n\
+    \          set $info bf-info.bf.svc.cluster.local;\n            proxy_pass http://$info;\n\
     \        }\n        location /api/game {\n            access_by_lua_block {\n\
     \                local gt = require \"gateway\"\n                gt:verifyToken({\"\
-    ^P\",\"^D\"})\n            }\n            set $game game.bf.svc.cluster.local;\n\
+    ^P\",\"^D\"})\n            }\n            set $game bf-game.bf.svc.cluster.local;\n\
     \            proxy_pass http://$game;\n        }\n\t\tlocation /api/film {\n \
     \           access_by_lua_block {\n                local gt = require \"gateway\"\
     \n                gt:verifyToken({\"^P\",\"^D\"})\n            }\n           \
-    \ set $film film.bf.svc.cluster.local;\n            proxy_pass http://$film;\n\
-    \        }\n\t\tlocation /api/search {\n            set $search search.bf.svc.cluster.local;\n\
+    \ set $film bf-film.bf.svc.cluster.local;\n            proxy_pass http://$film;\n\
+    \        }\n\t\tlocation /api/search {\n            set $search bf-search.bf.svc.cluster.local;\n\
     \            proxy_pass http://$search;\n        }\n    }\n}"
 kind: ConfigMap
 metadata:

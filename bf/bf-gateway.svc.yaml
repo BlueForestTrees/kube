@@ -2,19 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:selection"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-gateway"]'
     workload.cattle.io/targetWorkloadIdNoop: 'true'
     workload.cattle.io/workloadPortBased: 'true'
   labels:
     cattle.io/creator: norman
-  name: selection
+  name: bf-gateway
   namespace: bf
   ownerReferences:
   - apiVersion: apps/v1beta2
     controller: true
     kind: daemonset
-    name: selection
-    uid: 0829028b-22e6-11e9-8468-fa163e4f813e
+    name: bf-gateway
+    uid: 01e2ecb1-7558-11e9-9fe8-eeeeeeeeeeee
 spec:
   ports:
   - name: default
@@ -22,6 +22,6 @@ spec:
     protocol: TCP
     targetPort: 42
   selector:
-    workload.user.cattle.io/workloadselector: daemonSet-bf-selection
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-gateway
   sessionAffinity: None
   type: ClusterIP

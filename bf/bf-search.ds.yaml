@@ -3,29 +3,46 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-a08f5f00fc38a36b135f10009d58e0fc","ingressName":"bf:bf-ing","hostname":"blueforest.org","path":"/","allNodes":true}]'
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-web
-  name: web
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-search
+  name: bf-search
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-web
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-search
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-04T10:25:06Z'
+        cattle.io/timestamp: '2019-05-13T08:22:53Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-web
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-search
     spec:
       containers:
-      - image: blueforest/web:2.2.0
+      - env:
+        - name: PORT
+          value: '80'
+        - name: REST_PATH
+          value: rest
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: bf
+              optional: false
+        envFrom:
+        - secretRef:
+            name: mongo
+            optional: false
+        - configMapRef:
+            name: log
+            optional: false
+        image: blueforest/search:1.1.0
         imagePullPolicy: Always
-        name: web
+        name: bf-search
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -44,7 +61,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 46
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

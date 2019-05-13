@@ -3,24 +3,23 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-bf451107538ad5970aaae58c4af70762","ingressName":"bf:drawhand","hostname":"draw.blueforest.org","path":"/api","allNodes":true},{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-ee204bf032e5a331b13a5e7eb54261e7","ingressName":"bf:bf-ing","hostname":"blueforest.org","path":"/api","allNodes":true}]'
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-gateway
-  name: gateway
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-user
+  name: bf-user
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-gateway
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-user
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-03-31T15:36:31Z'
+        cattle.io/timestamp: '2019-05-13T08:23:55Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-gateway
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-user
     spec:
       containers:
       - env:
@@ -32,11 +31,20 @@ spec:
               optional: false
         envFrom:
         - secretRef:
+            name: mongo
+            optional: false
+        - secretRef:
             name: jwt
             optional: false
-        image: blueforest/gateway:1.0.5
+        - configMapRef:
+            name: bf
+            optional: false
+        - secretRef:
+            name: user
+            optional: false
+        image: blueforest/user:1.1.2
         imagePullPolicy: Always
-        name: gateway
+        name: bf-user
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -48,10 +56,6 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         tty: true
-        volumeMounts:
-        - mountPath: usr/local/openresty/nginx/conf
-          name: conf
-          readOnly: true
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -59,16 +63,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-      volumes:
-      - configMap:
-          defaultMode: 420
-          items:
-          - key: nginx.conf
-            path: nginx.conf
-          name: gateway
-          optional: false
-        name: conf
-  templateGeneration: 57
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

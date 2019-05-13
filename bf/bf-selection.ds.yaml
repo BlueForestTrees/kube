@@ -5,40 +5,36 @@ metadata:
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-tree
-  name: tree
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-selection
+  name: bf-selection
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-tree
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-selection
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-30T07:50:13Z'
+        cattle.io/timestamp: '2019-05-13T08:23:14Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-tree
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-selection
     spec:
       containers:
-      - env:
-        - name: DB_CONNECTION_STRING
-          valueFrom:
-            secretKeyRef:
-              key: DB_CONNECTION_STRING
-              name: mongo
-              optional: false
-        envFrom:
+      - envFrom:
+        - secretRef:
+            name: mongo
+            optional: false
         - configMapRef:
             name: bf
             optional: false
         - configMapRef:
             name: log
             optional: false
-        image: blueforest/tree:1.2.9
+        image: blueforest/selection:0.0.4
         imagePullPolicy: Always
-        name: tree
+        name: bf-selection
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -50,10 +46,6 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         tty: true
-        volumeMounts:
-        - mountPath: /mq.json
-          name: rabbit
-          subPath: mq.json
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: hub
@@ -61,13 +53,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-      volumes:
-      - name: rabbit
-        secret:
-          defaultMode: 256
-          optional: false
-          secretName: rabbit
-  templateGeneration: 32
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

@@ -5,49 +5,37 @@ metadata:
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-user
-  name: user
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-message
+  name: bf-message
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-user
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-message
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-11T15:47:07Z'
+        cattle.io/timestamp: '2019-05-13T08:21:55Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-user
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-message
     spec:
       containers:
-      - env:
-        - name: DEBUG
-          valueFrom:
-            configMapKeyRef:
-              key: DEBUG
-              name: log
-              optional: false
-        envFrom:
+      - envFrom:
         - secretRef:
             name: mongo
-            optional: false
-        - secretRef:
-            name: jwt
             optional: false
         - configMapRef:
             name: bf
             optional: false
-        - secretRef:
-            name: user
-            optional: false
-        image: blueforest/user:1.1.2
+        image: blueforest/message:1.0.7
         imagePullPolicy: Always
-        name: user
+        name: bf-message
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities: {}
           privileged: false
           readOnlyRootFilesystem: false
           runAsNonRoot: false
@@ -62,7 +50,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 13
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
