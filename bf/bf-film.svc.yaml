@@ -2,19 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:film"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-film"]'
     workload.cattle.io/targetWorkloadIdNoop: 'true'
     workload.cattle.io/workloadPortBased: 'true'
   labels:
     cattle.io/creator: norman
-  name: film
+  name: bf-film
   namespace: bf
   ownerReferences:
   - apiVersion: apps/v1beta2
     controller: true
     kind: daemonset
-    name: film
-    uid: 4b0b3985-4f46-11e9-b6ba-fa163e4f813e
+    name: bf-film
+    uid: da88f4df-7557-11e9-9fe8-eeeeeeeeeeee
 spec:
   ports:
   - name: default
@@ -22,6 +22,6 @@ spec:
     protocol: TCP
     targetPort: 42
   selector:
-    workload.user.cattle.io/workloadselector: daemonSet-bf-film
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-film
   sessionAffinity: None
   type: ClusterIP

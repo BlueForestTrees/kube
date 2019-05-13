@@ -5,45 +5,41 @@ metadata:
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-game
-  name: game
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-facet
+  name: bf-facet
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-game
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-facet
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-12T16:50:11Z'
+        cattle.io/timestamp: '2019-05-13T08:18:50Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-game
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-facet
     spec:
       containers:
       - env:
-        - name: DB_CONNECTION_STRING
-          valueFrom:
-            secretKeyRef:
-              key: DB_CONNECTION_STRING
-              name: mongo
-              optional: false
-        - name: NODE_ENV
-          valueFrom:
-            configMapKeyRef:
-              key: NODE_ENV
-              name: bf
-              optional: false
-        - name: DEBUG
-          valueFrom:
-            configMapKeyRef:
-              key: DEBUG
-              name: log
-              optional: false
-        image: blueforest/game:0.0.6
+        - name: NAME
+          value: facet
+        - name: TREE_BASE_URL
+          value: http://bf-tree
+        envFrom:
+        - secretRef:
+            name: mongo
+            optional: false
+        - configMapRef:
+            name: bf
+            optional: false
+        - configMapRef:
+            name: log
+            optional: false
+        image: blueforest/attribut:1.2.0
         imagePullPolicy: Always
-        name: game
+        name: bf-facet
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -72,7 +68,7 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 10
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

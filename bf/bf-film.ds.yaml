@@ -3,36 +3,44 @@ kind: DaemonSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-5dn6d
-    field.cattle.io/publicEndpoints: 'null'
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
-  name: categorie
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-film
+  name: bf-film
   namespace: bf
 spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-film
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-04-14T08:14:42Z'
+        cattle.io/timestamp: '2019-05-13T08:19:39Z'
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-film
     spec:
       containers:
-      - envFrom:
+      - env:
+        - name: PORT
+          value: '80'
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: NODE_ENV
+              name: bf
+              optional: false
+        envFrom:
         - secretRef:
             name: mongo
             optional: false
         - configMapRef:
-            name: bf
+            name: log
             optional: false
-        image: blueforest/categorie:1.0.5
+        image: blueforest/film:2.0.5
         imagePullPolicy: Always
-        name: categorie
+        name: bf-film
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -51,7 +59,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  templateGeneration: 5
+  templateGeneration: 1
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

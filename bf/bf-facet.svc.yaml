@@ -2,19 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:facet"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-facet"]'
     workload.cattle.io/targetWorkloadIdNoop: 'true'
     workload.cattle.io/workloadPortBased: 'true'
   labels:
     cattle.io/creator: norman
-  name: facet
+  name: bf-facet
   namespace: bf
   ownerReferences:
   - apiVersion: apps/v1beta2
     controller: true
     kind: daemonset
-    name: facet
-    uid: 11dffa91-fb10-11e8-8468-fa163e4f813e
+    name: bf-facet
+    uid: bdad16db-7557-11e9-9fe8-eeeeeeeeeeee
 spec:
   ports:
   - name: default
@@ -22,6 +22,6 @@ spec:
     protocol: TCP
     targetPort: 42
   selector:
-    workload.user.cattle.io/workloadselector: daemonSet-bf-facet
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-facet
   sessionAffinity: None
   type: ClusterIP

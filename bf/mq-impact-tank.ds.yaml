@@ -16,13 +16,15 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-09T15:35:56Z'
+        cattle.io/timestamp: '2019-05-13T08:18:01Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-mq-impact-tank
     spec:
       containers:
       - env:
+        - name: BASEURL_BRANCHES
+          value: http://bf-tree/api/tree/branches/
         - name: DB_CONNECTION_STRING
           valueFrom:
             secretKeyRef:
@@ -80,7 +82,7 @@ spec:
           name: queue
           optional: false
         name: queue
-  templateGeneration: 7
+  templateGeneration: 8
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1

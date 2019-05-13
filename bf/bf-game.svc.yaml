@@ -2,19 +2,19 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:categorie"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-game"]'
     workload.cattle.io/targetWorkloadIdNoop: 'true'
     workload.cattle.io/workloadPortBased: 'true'
   labels:
     cattle.io/creator: norman
-  name: categorie
+  name: bf-game
   namespace: bf
   ownerReferences:
   - apiVersion: apps/v1beta2
     controller: true
     kind: daemonset
-    name: categorie
-    uid: b3e691d6-fb0e-11e8-8468-fa163e4f813e
+    name: bf-game
+    uid: f18f62a2-7557-11e9-9fe8-eeeeeeeeeeee
 spec:
   ports:
   - name: default
@@ -22,6 +22,6 @@ spec:
     protocol: TCP
     targetPort: 42
   selector:
-    workload.user.cattle.io/workloadselector: daemonSet-bf-categorie
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-game
   sessionAffinity: None
   type: ClusterIP

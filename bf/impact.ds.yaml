@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-05-04T10:19:45Z'
+        cattle.io/timestamp: '2019-05-13T08:16:42Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: daemonSet-bf-impact
@@ -25,6 +25,8 @@ spec:
       - env:
         - name: NAME
           value: impact
+        - name: TREE_BASE_URL
+          value: http://bf-tree
         envFrom:
         - secretRef:
             name: mongo
@@ -66,7 +68,7 @@ spec:
           defaultMode: 256
           optional: false
           secretName: rabbit
-  templateGeneration: 18
+  templateGeneration: 19
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
