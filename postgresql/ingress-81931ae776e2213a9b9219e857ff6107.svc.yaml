@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["deployment:postgresql:pgadmin"]'
+  labels:
+    cattle.io/creator: norman
+  name: ingress-81931ae776e2213a9b9219e857ff6107
+  namespace: postgresql
+  ownerReferences:
+  - apiVersion: v1beta1/extensions
+    controller: true
+    kind: Ingress
+    name: pgadmin
+    uid: 90439cdf-8458-11e9-9e19-fa163e2de4ff
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    workloadID_ingress-81931ae776e2213a9b9219e857ff6107: 'true'
+  sessionAffinity: None
+  type: ClusterIP

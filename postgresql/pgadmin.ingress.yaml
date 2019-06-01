@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    field.cattle.io/creatorId: user-5dn6d
+    field.cattle.io/ingressState: '{"cGdhZG1pbi9wb3N0Z3Jlc3FsL3BnYWRtaW4uYmx1ZWZvcmVzdC5vcmcvLzgw":"deployment:postgresql:pgadmin"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"postgresql:ingress-81931ae776e2213a9b9219e857ff6107","ingressName":"postgresql:pgadmin","hostname":"pgadmin.blueforest.org","allNodes":true}]'
+    kubernetes.io/tls-acme: '"true"'
+  labels:
+    cattle.io/creator: norman
+  name: pgadmin
+  namespace: postgresql
+spec:
+  rules:
+  - host: pgadmin.blueforest.org
+    http:
+      paths:
+      - backend:
+          serviceName: ingress-81931ae776e2213a9b9219e857ff6107
+          servicePort: 80
+  tls:
+  - hosts:
+    - pgadmin.blueforest.org
+    secretName: fez948
