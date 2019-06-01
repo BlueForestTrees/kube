@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["deployment:postgresql:pgadmin"]'
+    workload.cattle.io/targetWorkloadIdNoop: 'true'
+    workload.cattle.io/workloadPortBased: 'true'
+  labels:
+    cattle.io/creator: norman
+  name: pgadmin
+  namespace: postgresql
+  ownerReferences:
+  - apiVersion: apps/v1beta2
+    controller: true
+    kind: deployment
+    name: pgadmin
+    uid: 1d577102-8458-11e9-9e19-fa163e2de4ff
+spec:
+  ports:
+  - name: default
+    port: 42
+    protocol: TCP
+    targetPort: 42
+  selector:
+    workload.user.cattle.io/workloadselector: deployment-postgresql-pgadmin
+  sessionAffinity: None
+  type: ClusterIP
