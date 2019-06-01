@@ -116,6 +116,22 @@ items:
     generateName: clusterrolebinding-
     labels:
       cattle.io/creator: norman
+      f8192c79-8455-11e9-b8ca-0242ac110002: owner-user
+    name: clusterrolebinding-79wcc
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: p-xngst-namespaces-edit
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: user-5dn6d
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    generateName: clusterrolebinding-
+    labels:
+      cattle.io/creator: norman
     name: clusterrolebinding-8rsc5
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -137,6 +153,7 @@ items:
       cattle.io/creator: norman
       cc47d516-fc7d-11e8-8283-0242ac110002: owner-user
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
+      f8192c79-8455-11e9-b8ca-0242ac110002: owner-user
     name: clusterrolebinding-btxxg
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -158,6 +175,7 @@ items:
       cattle.io/creator: norman
       cc47d516-fc7d-11e8-8283-0242ac110002: owner-user
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
+      f8192c79-8455-11e9-b8ca-0242ac110002: owner-user
     name: clusterrolebinding-c7thp
   roleRef:
     apiGroup: rbac.authorization.k8s.io
