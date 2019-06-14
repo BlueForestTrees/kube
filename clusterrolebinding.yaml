@@ -148,6 +148,7 @@ items:
     labels:
       2cf9f2af-fa45-11e8-9073-0242ac110002: owner-user
       4ab8b795-3b96-11e9-a4f6-0242ac110002: owner-user
+      57af4c6f-8ea9-11e9-b8ca-0242ac110002: owner-user
       6f8de3e7-fa43-11e8-9073-0242ac110002: owner-user
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
       cattle.io/creator: norman
@@ -170,6 +171,7 @@ items:
     labels:
       2cf9f2af-fa45-11e8-9073-0242ac110002: owner-user
       4ab8b795-3b96-11e9-a4f6-0242ac110002: owner-user
+      57af4c6f-8ea9-11e9-b8ca-0242ac110002: owner-user
       6f8de3e7-fa43-11e8-9073-0242ac110002: owner-user
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
       cattle.io/creator: norman
@@ -228,6 +230,22 @@ items:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
     name: p-bznsc-namespaces-edit
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: User
+    name: user-5dn6d
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    generateName: clusterrolebinding-
+    labels:
+      57af4c6f-8ea9-11e9-b8ca-0242ac110002: owner-user
+      cattle.io/creator: norman
+    name: clusterrolebinding-k8z85
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: p-cl8qx-namespaces-edit
   subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: User

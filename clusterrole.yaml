@@ -764,6 +764,24 @@ items:
   kind: ClusterRole
   metadata:
     annotations:
+      authz.cluster.auth.io/project-namespaces: p-cl8qx-namespaces-edit
+    labels:
+      cattle.io/creator: norman
+    name: p-cl8qx-namespaces-edit
+  rules: null
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      authz.cluster.auth.io/project-namespaces: p-cl8qx-namespaces-readonly
+    labels:
+      cattle.io/creator: norman
+    name: p-cl8qx-namespaces-readonly
+  rules: null
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
       authz.cluster.auth.io/project-namespaces: p-g5rmx-namespaces-edit
     labels:
       cattle.io/creator: norman
