@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":80,"protocol":"HTTP","serviceName":"bf:cm-acme-http-solver-s78kk","ingressName":"bf:cm-acme-http-solver-kvdpc","hostname":"imf.blueforest.org","path":"/.well-known/acme-challenge/FplqCpIhxwJxI97yPyrrd7PV52AkqS9E7_VLqk6sYac","allNodes":true}]'
+  generateName: cm-acme-http-solver-
+  labels:
+    certmanager.k8s.io/acme-http-domain: '1122633500'
+    certmanager.k8s.io/acme-http-token: '1349652216'
+  name: cm-acme-http-solver-kvdpc
+  namespace: bf
+  ownerReferences:
+  - apiVersion: certmanager.k8s.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Certificate
+    name: imf
+    uid: bd780c3f-8eb2-11e9-ba67-fa163e118360
+spec:
+  rules:
+  - host: imf.blueforest.org
+    http:
+      paths:
+      - backend:
+          serviceName: cm-acme-http-solver-s78kk
+          servicePort: 8089
+        path: /.well-known/acme-challenge/FplqCpIhxwJxI97yPyrrd7PV52AkqS9E7_VLqk6sYac

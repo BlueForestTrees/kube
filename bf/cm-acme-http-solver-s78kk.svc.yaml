@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    auth.istio.io/8089: NONE
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":31912,"protocol":"TCP","serviceName":"bf:cm-acme-http-solver-s78kk","allNodes":true}]'
+  generateName: cm-acme-http-solver-
+  labels:
+    certmanager.k8s.io/acme-http-domain: '1122633500'
+    certmanager.k8s.io/acme-http-token: '1349652216'
+  name: cm-acme-http-solver-s78kk
+  namespace: bf
+  ownerReferences:
+  - apiVersion: certmanager.k8s.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Certificate
+    name: imf
+    uid: bd780c3f-8eb2-11e9-ba67-fa163e118360
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    nodePort: 31912
+    port: 8089
+    protocol: TCP
+    targetPort: 8089
+  selector:
+    certmanager.k8s.io/acme-http-domain: '1122633500'
+    certmanager.k8s.io/acme-http-token: '1349652216'
+  sessionAffinity: None
+  type: NodePort

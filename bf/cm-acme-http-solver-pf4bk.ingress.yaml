@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  generateName: cm-acme-http-solver-
+  labels:
+    certmanager.k8s.io/acme-http-domain: '1122633500'
+    certmanager.k8s.io/acme-http-token: '1349652216'
+  name: cm-acme-http-solver-pf4bk
+  namespace: bf
+  ownerReferences:
+  - apiVersion: certmanager.k8s.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Certificate
+    name: imf.secret
+    uid: a879ff0a-8eb3-11e9-ba67-fa163e118360
+spec:
+  rules:
+  - host: imf.blueforest.org
+    http:
+      paths:
+      - backend:
+          serviceName: cm-acme-http-solver-xshsc
+          servicePort: 8089
+        path: /.well-known/acme-challenge/FplqCpIhxwJxI97yPyrrd7PV52AkqS9E7_VLqk6sYac

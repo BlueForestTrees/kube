@@ -2,8 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     field.cattle.io/creatorId: user-5dn6d
     field.cattle.io/ingressState: '{"aW1mL2JmL2ltZi5ibHVlZm9yZXN0Lm9yZy8vODA=":"deployment:bf:imf"}'
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"bf:ingress-6e2f672d4ca2e7b2ab11ed03bcda91da","ingressName":"bf:imf","hostname":"imf.blueforest.org","allNodes":true}]'
+    kubernetes.io/tls-acme: '"true"'
   labels:
     cattle.io/creator: norman
   name: imf
@@ -16,3 +19,7 @@ spec:
       - backend:
           serviceName: ingress-6e2f672d4ca2e7b2ab11ed03bcda91da
           servicePort: 80
+  tls:
+  - hosts:
+    - imf.blueforest.org
+    secretName: imf.secret
