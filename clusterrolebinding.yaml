@@ -360,42 +360,6 @@ items:
   kind: ClusterRoleBinding
   metadata:
     labels:
-      app: elasticsearch
-      chart: elasticsearch-0.1.0
-      heritage: Tiller
-      io.cattle.field/appId: efk
-      release: efk
-    name: efk-elasticsearch
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: efk-elasticsearch
-  subjects:
-  - kind: ServiceAccount
-    name: efk-elasticsearch
-    namespace: efk
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    labels:
-      app: fluent-bit
-      chart: fluent-bit-0.5.1
-      heritage: Tiller
-      io.cattle.field/appId: efk
-      release: efk
-    name: efk-fluent-bit
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: efk-fluent-bit
-  subjects:
-  - kind: ServiceAccount
-    name: efk-fluent-bit
-    namespace: efk
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    labels:
       cattle.io/creator: norman
     name: globaladmin-user-5dn6d
   roleRef:
@@ -524,62 +488,6 @@ items:
   - kind: ServiceAccount
     name: jenkins
     namespace: p-g5rmx-pipeline
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    labels:
-      app: prometheus
-      chart: prometheus-6.2.1
-      component: kube-state-metrics
-      heritage: Tiller
-      io.cattle.field/appId: prometheus
-      release: prometheus
-    name: prometheus-kube-state-metrics
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: prometheus-kube-state-metrics
-  subjects:
-  - kind: ServiceAccount
-    name: prometheus-kube-state-metrics
-    namespace: prometheus
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    labels:
-      app: prometheus
-      chart: prometheus-6.2.1
-      component: server
-      heritage: Tiller
-      io.cattle.field/appId: prometheus
-      release: prometheus
-    name: prometheus-server
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: prometheus-server
-  subjects:
-  - kind: ServiceAccount
-    name: prometheus-server
-    namespace: prometheus
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    labels:
-      app: prometheus-grafana
-      chart: grafana-0.0.31
-      heritage: Tiller
-      io.cattle.field/appId: prometheus
-      release: prometheus
-    name: psp-prometheus-grafana
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: psp-prometheus-grafana
-  subjects:
-  - kind: ServiceAccount
-    name: prometheus-grafana
-    namespace: prometheus
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:

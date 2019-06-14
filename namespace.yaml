@@ -95,7 +95,6 @@ items:
   kind: Namespace
   metadata:
     annotations:
-      cattle.io/appIds: efk
       cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-05-11T20:47:02Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-05-11T20:47:01Z"}]}'
       field.cattle.io/creatorId: user-5dn6d
       field.cattle.io/projectId: c-5qdp4:p-nnc9n
@@ -321,7 +320,6 @@ items:
   kind: Namespace
   metadata:
     annotations:
-      cattle.io/appIds: prometheus
       cattle.io/status: '{"Conditions":[{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2019-05-09T14:00:02Z"},{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2019-05-09T14:00:01Z"}]}'
       field.cattle.io/creatorId: user-5dn6d
       field.cattle.io/projectId: c-5qdp4:p-nnc9n
