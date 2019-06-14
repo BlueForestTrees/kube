@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+    field.cattle.io/ingressState: '{"aW1mL2JmL2ltZi5ibHVlZm9yZXN0Lm9yZy8vODA=":"deployment:bf:imf"}'
+  labels:
+    cattle.io/creator: norman
+  name: imf
+  namespace: bf
+spec:
+  rules:
+  - host: imf.blueforest.org
+    http:
+      paths:
+      - backend:
+          serviceName: ingress-6e2f672d4ca2e7b2ab11ed03bcda91da
+          servicePort: 80

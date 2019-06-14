@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["deployment:bf:imf"]'
+  labels:
+    cattle.io/creator: norman
+  name: ingress-6e2f672d4ca2e7b2ab11ed03bcda91da
+  namespace: bf
+  ownerReferences:
+  - apiVersion: v1beta1/extensions
+    controller: true
+    kind: Ingress
+    name: imf
+    uid: 37509643-8eb2-11e9-9e19-fa163e2de4ff
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    workloadID_ingress-6e2f672d4ca2e7b2ab11ed03bcda91da: 'true'
+  sessionAffinity: None
+  type: ClusterIP

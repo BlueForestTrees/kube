@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: '2'
+    deployment.kubernetes.io/revision: '7'
     field.cattle.io/creatorId: user-5dn6d
   labels:
     cattle.io/creator: norman
@@ -24,13 +24,20 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: '2019-06-14T14:19:33Z'
+        cattle.io/timestamp: '2019-06-14T14:36:42Z'
       creationTimestamp: null
       labels:
         workload.user.cattle.io/workloadselector: deployment-bf-imf
     spec:
       containers:
-      - image: blueforest/imf:8
+      - env:
+        - name: DB_NAME
+          value: postgres
+        - name: DB_PWD
+          value: m74KJzvUU3
+        - name: DB_URL
+          value: jdbc:postgresql://postgresql-rtpct-postgresql.postgresql-rtpct.svc.cluster.local:5432/spies
+        image: blueforest/imf:9
         imagePullPolicy: Always
         name: imf
         resources: {}
