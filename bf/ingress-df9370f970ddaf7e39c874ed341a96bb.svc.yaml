@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    field.cattle.io/targetWorkloadIds: '["daemonset:bf:draw"]'
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-draw"]'
   labels:
     cattle.io/creator: norman
   name: ingress-df9370f970ddaf7e39c874ed341a96bb
