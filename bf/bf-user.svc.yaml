@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-user"]'
+    workload.cattle.io/targetWorkloadIdNoop: 'true'
+    workload.cattle.io/workloadPortBased: 'true'
+  labels:
+    cattle.io/creator: norman
+  name: bf-user
+  namespace: bf
+  ownerReferences:
+  - apiVersion: apps/v1beta2
+    controller: true
+    kind: daemonset
+    name: bf-user
+    uid: 731c8ce7-7558-11e9-9fe8-eeeeeeeeeeee
+spec:
+  ports:
+  - name: default
+    port: 42
+    protocol: TCP
+    targetPort: 42
+  selector:
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-user
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["daemonset:bf:bf-grandeur"]'
+    workload.cattle.io/targetWorkloadIdNoop: 'true'
+    workload.cattle.io/workloadPortBased: 'true'
+  labels:
+    cattle.io/creator: norman
+  name: bf-grandeur
+  namespace: bf
+  ownerReferences:
+  - apiVersion: apps/v1beta2
+    controller: true
+    kind: daemonset
+    name: bf-grandeur
+    uid: 0df7122a-7558-11e9-9fe8-eeeeeeeeeeee
+spec:
+  ports:
+  - name: default
+    port: 42
+    protocol: TCP
+    targetPort: 42
+  selector:
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-grandeur
+  sessionAffinity: None
+  type: ClusterIP

@@ -1,0 +1,74 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-5dn6d
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: daemonSet-bf-bf-tree
+  name: bf-tree
+  namespace: bf
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: daemonSet-bf-bf-tree
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: '2019-06-05T12:30:41Z'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: daemonSet-bf-bf-tree
+    spec:
+      containers:
+      - env:
+        - name: DB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              key: DB_CONNECTION_STRING
+              name: mongo
+              optional: false
+        envFrom:
+        - configMapRef:
+            name: bf
+            optional: false
+        - configMapRef:
+            name: log
+            optional: false
+        image: blueforest/tree:1.3.0
+        imagePullPolicy: Always
+        name: bf-tree
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /mq.json
+          name: rabbit
+          subPath: mq.json
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: hub
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: rabbit
+        secret:
+          defaultMode: 256
+          optional: false
+          secretName: rabbit
+  templateGeneration: 2
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
