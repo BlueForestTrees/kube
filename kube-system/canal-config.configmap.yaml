@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  canal_iface: ''
+  cni_network_config: "{\n  \"name\": \"k8s-pod-network\",\n  \"cniVersion\": \"0.3.0\"\
+    ,\n  \"plugins\": [\n    {\n      \"type\": \"calico\",\n      \"log_level\":\
+    \ \"WARNING\",\n      \"datastore_type\": \"kubernetes\",\n      \"nodename\"\
+    : \"__KUBERNETES_NODE_NAME__\",\n      \"ipam\": {\n        \"type\": \"host-local\"\
+    ,\n        \"subnet\": \"usePodCidr\"\n      },\n      \"policy\": {\n       \
+    \ \"type\": \"k8s\",\n        \"k8s_auth_token\": \"__SERVICEACCOUNT_TOKEN__\"\
+    \n      },\n      \"kubernetes\": {\n        \"k8s_api_root\": \"https://__KUBERNETES_SERVICE_HOST__:__KUBERNETES_SERVICE_PORT__\"\
+    ,\n        \"kubeconfig\": \"/etc/kubernetes/ssl/kubecfg-kube-node.yaml\"\n  \
+    \    }\n    },\n    {\n      \"type\": \"portmap\",\n      \"snat\": true,\n \
+    \     \"capabilities\": {\"portMappings\": true}\n    }\n  ]\n}"
+  masquerade: 'true'
+  net-conf.json: "{\n  \"Network\": \"10.42.0.0/16\",\n  \"Backend\": {\n    \"Type\"\
+    : \"vxlan\"\n  }\n}\n"
+kind: ConfigMap
+metadata:
+  annotations: {}
+  name: canal-config
+  namespace: kube-system
