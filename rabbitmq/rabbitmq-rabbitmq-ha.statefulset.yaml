@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["51.77.136.161"],"port":443,"protocol":"HTTPS","serviceName":"rabbitmq:rabbitmq-rabbitmq-ha","ingressName":"rabbitmq:rabadmin","hostname":"rabbit.blueforest.org","path":"/","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["\u003cnil\u003e"],"port":443,"protocol":"HTTPS","serviceName":"rabbitmq:rabbitmq-rabbitmq-ha","ingressName":"rabbitmq:rabadmin","hostname":"rabbit.blueforest.org","path":"/","allNodes":true}]'
   labels:
     app: rabbitmq-ha
     chart: rabbitmq-ha-1.21.0
