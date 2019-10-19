@@ -151,7 +151,6 @@ items:
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
       cattle.io/creator: norman
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
-      e8ecae45-f268-11e9-8273-0242ac110002: owner-user
     name: clusterrolebinding-btxxg
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -172,7 +171,6 @@ items:
       6f922f4e-fa43-11e8-9073-0242ac110002: owner-user
       cattle.io/creator: norman
       e36cf676-fd71-11e8-8283-0242ac110002: owner-user
-      e8ecae45-f268-11e9-8273-0242ac110002: owner-user
     name: clusterrolebinding-c7thp
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -358,7 +356,6 @@ items:
     generateName: clusterrolebinding-
     labels:
       cattle.io/creator: norman
-      e8ecae45-f268-11e9-8273-0242ac110002: owner-user
     name: clusterrolebinding-zjkld
   roleRef:
     apiGroup: rbac.authorization.k8s.io

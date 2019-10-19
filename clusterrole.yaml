@@ -686,24 +686,6 @@ items:
   kind: ClusterRole
   metadata:
     annotations:
-      authz.cluster.auth.io/project-namespaces: p-b9ls9-namespaces-edit
-    labels:
-      cattle.io/creator: norman
-    name: p-b9ls9-namespaces-edit
-  rules: null
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    annotations:
-      authz.cluster.auth.io/project-namespaces: p-b9ls9-namespaces-readonly
-    labels:
-      cattle.io/creator: norman
-    name: p-b9ls9-namespaces-readonly
-  rules: null
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    annotations:
       authz.cluster.auth.io/project-namespaces: p-bst62-namespaces-edit
     labels:
       cattle.io/creator: norman

@@ -23,7 +23,9 @@ spec:
   template:
     metadata:
       annotations:
+        cattle.io/timestamp: '2019-10-19T12:20:21Z'
         checksum/config: 61e8727c66a37947d55046ec366e70b9b30d164d1db7a85be2899f3deda3e450
+        field.cattle.io/ports: '[[{"containerPort":4369,"dnsName":"rabbitmq-rabbitmq-ha-","name":"epmd","protocol":"TCP","sourcePort":0},{"containerPort":5672,"dnsName":"rabbitmq-rabbitmq-ha-","name":"amqp","protocol":"TCP","sourcePort":0},{"containerPort":15672,"dnsName":"rabbitmq-rabbitmq-ha-","name":"http","protocol":"TCP","sourcePort":0}]]'
       creationTimestamp: null
       labels:
         app: rabbitmq-ha
@@ -41,24 +43,25 @@ spec:
             weight: 1
       containers:
       - env:
+        - name: K8S_HOSTNAME_SUFFIX
+          value: .rabbitmq-rabbitmq-ha-discovery.rabbitmq.svc.cluster.local
+        - name: K8S_SERVICE_NAME
+          value: rabbitmq-rabbitmq-ha-discovery
+        - name: RABBITMQ_NODENAME
+          value: rabbit@$(MY_POD_NAME).rabbitmq-rabbitmq-ha-discovery.rabbitmq.svc.cluster.local
+        - name: RABBITMQ_USE_LONGNAME
+          value: 'true'
         - name: MY_POD_NAME
           valueFrom:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.name
-        - name: RABBITMQ_USE_LONGNAME
-          value: 'true'
-        - name: RABBITMQ_NODENAME
-          value: rabbit@$(MY_POD_NAME).rabbitmq-rabbitmq-ha-discovery.rabbitmq.svc.cluster.local
-        - name: K8S_HOSTNAME_SUFFIX
-          value: .rabbitmq-rabbitmq-ha-discovery.rabbitmq.svc.cluster.local
-        - name: K8S_SERVICE_NAME
-          value: rabbitmq-rabbitmq-ha-discovery
         - name: RABBITMQ_ERLANG_COOKIE
           valueFrom:
             secretKeyRef:
               key: rabbitmq-erlang-cookie
               name: rabbitmq-rabbitmq-ha
+              optional: false
         image: rabbitmq:3.7-alpine
         imagePullPolicy: IfNotPresent
         livenessProbe:
