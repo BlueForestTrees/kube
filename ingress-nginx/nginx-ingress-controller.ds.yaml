@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   annotations:
-    field.cattle.io/publicEndpoints: '[{"nodeName":"c-5qdp4:m-b8a9f715dbb6","addresses":["51.77.137.98"],"port":80,"protocol":"TCP","podName":"ingress-nginx:nginx-ingress-controller-shwg7","allNodes":false},{"nodeName":"c-5qdp4:m-b8a9f715dbb6","addresses":["51.77.137.98"],"port":443,"protocol":"TCP","podName":"ingress-nginx:nginx-ingress-controller-shwg7","allNodes":false}]'
+    field.cattle.io/publicEndpoints: '[{"nodeName":"c-5qdp4:m-f97c5d29941b","addresses":["51.77.136.161"],"port":80,"protocol":"TCP","podName":"ingress-nginx:nginx-ingress-controller-bdb8l","allNodes":false},{"nodeName":"c-5qdp4:m-f97c5d29941b","addresses":["51.77.136.161"],"port":443,"protocol":"TCP","podName":"ingress-nginx:nginx-ingress-controller-bdb8l","allNodes":false},{"nodeName":"c-5qdp4:m-b8a9f715dbb6","addresses":["51.77.137.98"],"port":80,"protocol":"TCP","podName":"ingress-nginx:nginx-ingress-controller-shwg7","allNodes":false},{"nodeName":"c-5qdp4:m-b8a9f715dbb6","addresses":["51.77.137.98"],"port":443,"protocol":"TCP","podName":"ingress-nginx:nginx-ingress-controller-shwg7","allNodes":false}]'
   labels:
     app: ingress-nginx
   name: nginx-ingress-controller
